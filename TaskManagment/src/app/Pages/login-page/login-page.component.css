@@ -1,0 +1,17 @@
+#logoLogin {
+  
+   position: center;
+   width: 30px;
+   height: 30px;
+ 
+}
+
+#usuarioLogin {
+
+    border-color: black;
+}
+
+#senhaLogin {
+
+    border-color: black;
+}
