@@ -1,0 +1,69 @@
+#Instalar CLI Angular
+npm install -g @angular/cli
+
+#verificar versao CLI
+ng --version
+
+#Criar uma nova aplicação sem roting e com CSS
+ng new <your-app-name>
+
+#Executar aplicação em modo Desenvolvimento 
+ng serve -o
+
+#buildar a aplicação
+ng build --prod
+
+#Instalar Yarn no projeto 
+npm install -g yarn
+
+#Move into your project folder:
+cd ~/path/to/project
+
+#Run the following to run yarn in the project
+yarn set version berry
+
+# Criar um component ou pagina : 1 primeira opção exemplo , 2 comando completo
+
+ng generate component <your-path/ComponentName>
+
+ng generate component components/store/products
+
+# Criar um serviço : 1 primeira opção exemplo , 2 comando completo
+
+ng generate service <path-of-your-desire/ServiceName>
+
+ng generate service Testeservice/Teste/TesteServicecacaraio
+  
+
+
+## Ionic
+
+#Instalar Ionic
+npm install -g ionic
+
+#Criar um template com Ionic
+ionic start <path-name-of-your-desire> blank
+
+#Template de pagina Ionic 1 primeira opção exemplo , 2 comando completo
+ionic generate page <your-path/PageName>
+ionic generate page TestePages/Teste/TestePageCaraioooooooooooo
+
+#Rodar Aplicação Ionic
+ionic serve -o
+
+#Rodar com foco mobile
+ionic serve --lab
+
+
+#Instalar Redux
+npm install @ngrx/store --save
+
+ng add @ngrx/store
+
+#Instalar Firebase angular
+npm install firebase @angular/fire --save
+
+
+
+
+

@@ -1,0 +1,12 @@
+# Criar um component : 1 primeira opção exemplo , 2 comando completo
+
+ng generate component <path-of-your-desire>
+
+ng generate component components/store/products
+
+# Gerar uma pagina : 1 primeira opção exemplo , 2 comando completo
+
+ng generate page <Page-Name>
+
+ng generate page LoginPage
+  

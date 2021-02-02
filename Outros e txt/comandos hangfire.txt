@@ -1,0 +1,12 @@
+dotnet new web -f netcoreapp3.1 -n "ProjetoHangfire"
+
+dotnet add package HangFire.Core --version 1.7.18
+
+dotnet add package Hangfire.AspNetCore --version 1.7.18
+
+dotnet add package Hangfire.MemoryStorage --version 1.7.0
+
+dotnet add package HangFire.SqlServer --version 1.7.18
+
+
+
