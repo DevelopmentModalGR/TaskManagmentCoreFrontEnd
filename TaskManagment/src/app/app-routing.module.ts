@@ -3,13 +3,18 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomePageComponent } from './Pages/home-page/home-page.component';
 import { LoginPageComponent } from './Pages/login-page/login-page.component';
 
-const routes: Routes = [{
+/* const routes: Routes = [{
   path: '',
   component: HomePageComponent,
-  children: [ 
-    { path:'login', component: LoginPageComponent}    
+  children: [
+    { path:'login', component: LoginPageComponent}
   ]
-}];
+}]; */
+
+const routes: Routes = [
+  {path: '', component: HomePageComponent},
+  {path:'login', component: LoginPageComponent}
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

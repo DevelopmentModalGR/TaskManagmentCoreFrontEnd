@@ -5,9 +5,9 @@
     background-color: #60f2f7;
     color: #502f11
     }
-  
+
     #btnLOGIN {
-  
+
         border-color:#141414;
         border-radius:4px 4px 4px 4px;
         height: 50px;
@@ -18,42 +18,42 @@
         margin-top: 50px;
         color: #141414;
         margin-right: 60px;
-  
+
     }
-  
+
     #textInput {
-  
+
        height: 21px;
        width: 250px;
        border-color: black;
-  
-  
+
+
     }
-  
+
     #buttonCadastro {
-  
+
          background-color:  #3ef7e7;
+         border-radius:4px 4px 4px 4px;
          height: 27px;
          margin-left: 5px;
          border-color: black;
          font-weight: bolder;
     }
-  
+
     #text2Login {
-  
+
         font-size: 25px;
         margin-left: 30px;
-  
-  
+
+
     }
     #nameCadastro {
-  
+
         font-weight: bolder;
         font-size: 23px;
     }
-  
+
     #TextLOGIN {
-  
+
         margin-left: 20px;
     }
-  
