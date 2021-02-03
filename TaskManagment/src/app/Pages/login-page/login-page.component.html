@@ -1,30 +1,44 @@
-<h1> </h1>
+<h1></h1>
 
-
-<img src= "https://github.com/DevelopmentModalGR/TaskManagmentCoreFrontEnd/blob/main/Images/logo.png?raw=true" alt="Logotipo da empresa" width="700" height="300">
-
-
-<div>
-    <label id= "usuarioLogin" for= "usuário" > Usuário  </label>
-    <input type="text" id= "usuário" />
+<div id="logodiv">
+  <img
+    src="https://github.com/DevelopmentModalGR/TaskManagmentCoreFrontEnd/blob/main/Images/logo.png?raw=true"
+    alt="Logotipo da empresa"
+    id="logo"
+  />
 </div>
+
+
 <br>
-<div>
-    <label id= "senhaLogin" for= "senha" > Senha  </label>
-    <input type="text" id= "senha" />
+<div id="inputdiv">
+  <input class="input" type="text" id="usuário" placeholder="Email" />
+<br>
+<br>
+  <input class="input" type="text" id="senha" placeholder="Senha" />
 </div>
-<br>
-<div>
-   <label  class="checkbox keep">
-    <input name="user_session[remember_me]" type="hidden" value="0" /><input tabindex="3" type="checkbox" value="1" name="user_session[remember_me]" id="user_session_remember_me" />
+
+
+<div id="CantoInferior">
+<div class="control-label pull-right forgot" id="EsqueciSenha">
+  <a class="password-reset forgot--link" href=""> Esqueci minha senha </a>
+</div>
+
+
+<div id="ManterLogado">
+  <label class="checkbox keep">
+    <input name="user_session[remember_me]" type="hidden" value="0" /><input
+      tabindex="3"
+      type="checkbox"
+      value="1"
+      name="user_session[remember_me]"
+      id="user_session_remember_me"
+    />
     <span>Manter logado</span>
-    </label>
+  </label>
 </div>
-<div class="control-label pull-right forgot">
-    <a class="password-reset forgot--link" href=""> Esqueci minha senha </a>
-
 </div>
 
-<div>
-    <button id="btnEnter"> Entrar </button>
+
+<div id="divEnter">
+  <button id="btnEnter">Entrar</button>
 </div>

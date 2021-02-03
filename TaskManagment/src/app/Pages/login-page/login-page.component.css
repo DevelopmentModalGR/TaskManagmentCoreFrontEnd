@@ -1,17 +1,73 @@
+#AllComponents {
+  margin: auto;
+  width: 50%;
+}
+
+#logodiv {
+  margin: auto;
+  width: 25%;
+}
+
+#logo {
+  width: 380px;
+  height: 250px;
+}
+
+#inputdiv {
+  margin: auto;
+  width: 25%;
+}
+
+.input {
+  height: 30px;
+  border-radius: 8px 8px 8px 8px;
+  width: 95%;
+  border-color: black;
+  font-size: 20px;
+}
+
+#cantoinferior {
+  margin: auto;
+  width: 20%;
+}
+
+#EsqueciSenha {
+  float: right;
+}
+
+#CantoInferior {
+  margin: auto;
+  width: 25%;
+}
+
 #logoLogin {
-  
-   position: center;
-   width: 30px;
-   height: 30px;
- 
+  position: center;
+  width: 30px;
+  height: 30px;
 }
 
 #usuarioLogin {
-
-    border-color: black;
+  border-color: black;
 }
 
 #senhaLogin {
+  border-color: black;
+}
 
-    border-color: black;
+#divEnter {
+  margin: auto;
+  width: 13%;
+  margin-top: 10px;
+}
+
+#btnEnter {
+  background-color: #147cde;
+  color: #ffffff;
+  border-radius: 8px 8px 8px 8px;
+  height: 70px;
+  width: 200px;
+
+  border-color: black;
+  font-weight: bolder;
+  font-size: 20px;
 }
