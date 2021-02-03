@@ -1,9 +1,17 @@
 <div >
     <h1 id ="namePAGE">  </h1>
     <ul>
-        <img src= "https://github.com/DevelopmentModalGR/TaskManagmentCoreFrontEnd/blob/main/Images/ModalGr.png?raw=true" alt="Logotipo da empresa" width="200" height="50">
-        <button id="btnLOGIN" [routerLink]="['/login']" mat-flat-button>LOGIN</button>
-    </ul>
+        <img src= "https://github.com/DevelopmentModalGR/TaskManagmentCoreFrontEnd/blob/main/Images/logo.png?raw=true" alt="Logotipo da empresa" width="200" height="50">
+
+        <a class="uk-align-right">
+          <!--   <button class="uk-button uk-button-primary"></button> -->
+            <button id="btnLOGIN" [routerLink]="['/login']" mat-flat-button>LOGIN</button>
+        </a>
+
+
+
+
+      </ul>
     </div>
 <br>
     <div>
@@ -17,8 +25,9 @@
     <br>
 
      <div>
-        <h3 style="font-family: Book Antiqua" id="nameCadastro" class="intro-container__deion"> Cadastre-se grátis </h3>
-        <label for="Digite seu email">    </label>
-        <input type="text"  id="textInput"  name="Digite seu email">
+        <h1 style="font-family: Book Antiqua" id="nameCadastro" class="intro-container__deion"> Cadastre-se grátis </h1>
+        <label for="Digite seu email"></label>
+
+        <input type="text"  id="textInput"  placeholder="Insira seu Email">
         <button id="buttonCadastro" [routerLink]="['/login']" mat-flat-button>CADASTRAR</button>
      </div>
