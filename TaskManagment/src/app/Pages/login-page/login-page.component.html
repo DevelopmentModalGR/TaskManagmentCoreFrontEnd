@@ -1,5 +1,7 @@
 <h1></h1>
 
+<app-loading *ngIf="busy"></app-loading>
+
 <div id="logodiv">
   <img
     src="https://github.com/DevelopmentModalGR/TaskManagmentCoreFrontEnd/blob/main/Images/logo.png?raw=true"
@@ -10,12 +12,19 @@
 
 
 <br>
-<div id="inputdiv">
-  <input class="input" type="text" id="usuário" placeholder="Email" />
-<br>
-<br>
-  <input class="input" type="text" id="senha" placeholder="Senha" />
-</div>
+<form [formGroup]="form" *ngIf="!busy">
+  <div>
+    <div id="inputdiv">
+          <input class="uk-input uk-form-large" formControlName="username" type="text" placeholder="Email"  [ngClass]="{'uk-form-danger': (!form.controls.username.valid && !form.controls.username.pristine) }">
+      </div>
+      <div id="inputdiv">
+          <input class="uk-input uk-form-large" formControlName="password" type="password" placeholder="Senha" [ngClass]="{'uk-form-danger': (!form.controls.password.valid && !form.controls.password.pristine) }">
+      </div>
+      <div class="uk-margin uk-text-center">
+        <button [routerLink]="['/']" class="uk-button uk-button-primary uk-button-large" [disabled]="form.invalid" (click)="submit()">Entrar</button>
+    </div>
+  </div>
+</form>
 
 
 <div id="CantoInferior">
@@ -39,6 +48,4 @@
 </div>
 
 
-<div id="divEnter">
-  <button id="btnEnter">Entrar</button>
-</div>
+
