@@ -4,13 +4,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomePageComponent } from './Pages/home-page/home-page.component';
 import { LoginPageComponent } from './Pages/login-page/login-page.component';
 import { AuthService } from './Services/auth.service.component';
+import { TasksPageComponent } from './Pages/tasks-page/tasks-page.component';
 
 const routes: Routes = [{
   path: '',
   component: FramePageComponent,
   children: [
     { path: '', component: HomePageComponent},
-    { path: 'login', component: LoginPageComponent/* ,canActivate: [AuthService] */}
+    { path: 'login', component: LoginPageComponent/* ,canActivate: [AuthService] */},
+    { path: 'tasks', component: TasksPageComponent }
   ]
 }];
 

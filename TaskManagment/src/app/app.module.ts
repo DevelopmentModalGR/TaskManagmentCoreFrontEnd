@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
-import { TasksPageComponent } from './Pages/Pages/tasks-page/tasks-page.component';
+import { TasksPageComponent } from './Pages/tasks-page/tasks-page.component';
 
 @NgModule({
   declarations: [
