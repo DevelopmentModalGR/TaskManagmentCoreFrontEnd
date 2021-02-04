@@ -32,7 +32,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const token = Security.getToken();
+    /* const token = Security.getToken();
     if (token) {
       this.busy = true;
       this
@@ -48,7 +48,7 @@ export class LoginPageComponent implements OnInit {
             this.busy = false;
           }
         );
-    }
+    } */
   }
 
 

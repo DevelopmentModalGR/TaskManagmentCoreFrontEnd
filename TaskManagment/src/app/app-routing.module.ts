@@ -10,7 +10,7 @@ const routes: Routes = [{
   component: FramePageComponent,
   children: [
     { path: '', component: HomePageComponent},
-    { path: 'login', component: LoginPageComponent/* ,canActivate: [AuthService] */}
+    { path: 'login', component: LoginPageComponent,/* canActivate: [AuthService] */}
   ]
 }];
 

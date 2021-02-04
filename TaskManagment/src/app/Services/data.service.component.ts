@@ -9,7 +9,7 @@ import { Security } from 'src/app/Utils/security.util.component';
 })
 export class DataService {
 
-    public url = 'https://localhost:5001';
+    public url = 'https://localhost:3000/v1';
 
     constructor(private http: HttpClient) { }
 
