@@ -1,3 +1,4 @@
+import { SignupPageComponent } from './Pages/signup-page/signup-page.component';
 
 import { FramePageComponent } from './Pages/master/master.component';
 import { NgModule } from '@angular/core';
@@ -13,7 +14,8 @@ const routes: Routes = [{
   children: [
     { path: '', component: HomePageComponent},
     { path: 'login', component: LoginPageComponent,/* canActivate: [AuthService] */},
-    { path: 'tasks', component: TasksPageComponent}   
+    { path: 'tasks', component: TasksPageComponent},
+    { path: 'signup', component: SignupPageComponent}
   ]
 }];
 
