@@ -1,0 +1,50 @@
+<h1></h1>
+
+<app-loading *ngIf="busy"></app-loading>
+
+<div id="logodiv">
+  <img
+    src="https://github.com/DevelopmentModalGR/TaskManagmentCoreFrontEnd/blob/main/Images/logo.png?raw=true"
+    alt="Logotipo da empresa"
+    id="logo"/>
+</div>
+
+<br>
+<form [formGroup]="form" *ngIf="!busy">
+  <div id="form">
+
+    <div id="inputdiv">
+          <input class="uk-input uk-form-large" formControlName="name" type="text" placeholder="Nome Completo"  [ngClass]="{'uk-form-danger': (!form.controls.name.valid && !form.controls.name.pristine) }">
+    </div>
+      <br>
+    <div id="inputdiv">
+        <input class="uk-input uk-form-large" formControlName="email" type="email" placeholder="Email" [ngClass]="{'uk-form-danger': (!form.controls.email.valid && !form.controls.email.pristine) }">
+    </div>
+      <br>
+    <div id="inputdiv">
+          <input class="uk-input uk-form-large" formControlName="password" type="password" placeholder="Senha" [ngClass]="{'uk-form-danger': (!form.controls.password.valid && !form.controls.password.pristine) }">
+    </div>
+      <br>
+      <div id="inputdiv">
+        <input class="uk-input uk-form-large" formControlName="confirmPassword" type="password" placeholder="Confirme sua Senha"  [ngClass]="{'uk-form-danger': (!form.controls.password.valid && !form.controls.password.pristine) }">
+    </div>
+    <br>
+    <div id="inputdiv">
+        <input class="uk-input uk-form-large" formControlName="companyName" type="text" placeholder="Nome da Sua Empresa" [ngClass]="{'uk-form-danger': (!form.controls.companyName.valid && !form.controls.companyName.pristine) }">
+    </div>
+    <br>
+    <div id="inputdiv">
+      <input class="uk-input uk-form-large" formControlName="cnpj" type="text" placeholder="CNPJ"  [ngClass]="{'uk-form-danger': (!form.controls.cnpj.valid && !form.controls.cnpj.pristine) }">
+    </div>
+
+      <div class="uk-margin uk-text-center">
+        <button [routerLink]="['/']" class="uk-button uk-button-primary uk-button-large" [disabled]="form.invalid" (click)="submit()">CADASTRAR</button>
+      </div>
+  </div>
+</form>
+
+
+
+
+
+

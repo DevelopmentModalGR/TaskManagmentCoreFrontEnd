@@ -1,0 +1,49 @@
+#Obter Imagem 
+docker pull mcr.microsoft.com/mssql/server
+
+#Rodar SQL Docker
+docker run --name sqlserver -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=1q2w3e4r@#$" -p 1433:1433 -d mcr.microsoft.com/mssql/server
+
+#string Conexão 
+Server=localhost,1433;Database=Shop;User ID=sa;Password=1q2w3e4r@#$
+
+#Sql
+NomeUsuario = warlock1;Password = 1q2w3e4r@#$
+
+docker run -v ~/docker --name sqlserver -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=1q2w3e4r@#$" -p 1433:1433 -d mcr.microsoft.com/mssql/server
+
+dotnet watch run 
+
+###dentro da pasta que está o .csproj
+#pacotes ao projeto
+
+Install-Package Microsoft.EntityFrameworkCore.InMemory 
+
+Install-Package Microsoft.EntityFrameworkCore.SqlServer
+
+Install-Package Microsoft.EntityFrameworkCore.Design
+
+dotnet tool install --global dotnet-ef
+
+dotnet ef migrations add InitialCreate
+
+dotnet ef database update
+
+Install-Package Microsoft.AspNetCore.Authentication
+
+Install-Package Microsoft.AspNetCore.Authentication.JwtBearer
+
+Install-Package Swashbuckle.AspNetCore -v 5.1.4-rc1
+
+Install-Package Microsoft.AspNetCore.Mvc.NewtonsoftJson
+
+Install-Package Newtonsoft.Json
+
+git remote add origin <urlResitorioAqui> // linkar seu repositorio do github com o repos local 
+
+git push -u ogirin <suaBranch> // dar um push a uma branch especifica
+
+
+Server=tcp:warlockapi.database.windows.net,1433;Initial Catalog=7194;Persist Security Info=False;User ID=balta;Password=1q2w3e4r@#$;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+
+"ConnectionStrings": {"connectionString": "Server=localhost,1433;Database=Shop;User ID=SA;Password=1q2w3e4r@#$"}

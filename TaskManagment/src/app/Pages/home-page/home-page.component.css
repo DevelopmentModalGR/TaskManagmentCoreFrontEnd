@@ -1,0 +1,56 @@
+#namePAGE {
+  text-align: center;
+  font-weight: bold;
+  background-color: #60f2f7;
+  color: #502f11;
+}
+
+#btnLOGIN {
+  background-color: #147cde;
+  color: #ffffff;
+  border-radius: 8px 8px 8px 8px;
+  height: 70px;
+  width: 120px;
+  border-color: black;
+  font-weight: bolder;
+  font-size: 20px;
+  float: right;
+  margin-left: 10px;
+  margin-top: 1px;
+  margin-right: 20px;
+}
+
+#textInput {
+  height: 60px;
+  width: 30%;
+  border-color: black;
+  font-size: 30px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+#buttonCadastro {
+  background-color: #147cde;
+  color: #ffffff;
+  border-radius: 8px 8px 8px 8px;
+  height: 70px;
+  width: 200px;
+  margin-left: 10px;
+  margin-top: 1px;
+  border-color: black;
+  font-weight: bolder;
+  font-size: 20px;
+}
+#TextLOGIN {
+  margin-left: 20px;
+}
+
+#text2Login {
+  font-size: 25px;
+  margin-left: 30px;
+}
+#nameCadastro {
+  font-weight: bolder;
+  font-size: 34px;
+  margin-left: 20px;
+}

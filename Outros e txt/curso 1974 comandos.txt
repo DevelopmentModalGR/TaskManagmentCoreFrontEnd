@@ -1,0 +1,35 @@
+#Estrutura do projeto
+#Criar Pastas com a estruta abaixo:
+
+BaltaStore.Api
+BaltaStore.Domain
+BaltaStore.Infra
+BaltaStore.Shared
+BaltaStore.Tests
+
+#Comandos
+#Inserir os comandos para criar os templates de projeto dentro das respectivas pastas:
+
+#BaltaStore.Api
+dotnet new web
+
+#BaltaStore.Domain
+dotnet new classlib
+
+#BaltaStore.Infra
+dotnet new classlib
+
+#BaltaStore.Shared
+dotnet new classlib
+
+#BaltaStore.Tests 
+dotnet new mstest
+
+dotnet new sln
+
+dotnet restore
+
+#Adicionar referencia
+#dentro da pasta baltastore.Tests/ executar o comando abaixo para adicionar referencia ao tests:
+dotnet add reference ../BaltaStore.Domain\baltastore.Domain.csproj
+

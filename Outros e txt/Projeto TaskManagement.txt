@@ -1,0 +1,4 @@
+localbd connection string
+
+ "ConnectionStrings": { "TaskManagmentString": "Server=(localdb)\\mssqllocaldb;Database=TaskManagmentCore-2;Trusted_Connection=True;MultipleActiveResultSets=true"
+
