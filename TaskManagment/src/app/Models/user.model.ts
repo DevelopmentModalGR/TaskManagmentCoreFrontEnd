@@ -4,17 +4,17 @@ import { Company } from './company.model';
 
 export class User {
   constructor(
-    public Id: number,
-    public Name: string,
-    public Email: string,
-    public SignUpDate: Date,
-    public IsActive: boolean,
-    public IsAdmin: boolean,
-    public Password: string,
-    public Role: string,
-    public CompanyId: number,
-    public Company_: Company,
-    public Departments: Department[],
-    public Jobs: Job[]
+    public id: number,
+    public name: string,
+    public email: string,
+    public signUpDate: Date,
+    public isActive: boolean,
+    public isAdmin: boolean,
+    public password: string,
+    public role: string,
+    public companyId: number,
+    public company_: Company,
+    public departments: Department[],
+    public jobs: Job[]
   ) {}
 }

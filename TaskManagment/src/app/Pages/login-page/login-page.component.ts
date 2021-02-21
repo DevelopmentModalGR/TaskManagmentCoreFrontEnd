@@ -62,6 +62,7 @@ export class LoginPageComponent implements OnInit {
           this.busy = false;
           this.setUser(data.user, data.token);
           window.localStorage.setItem("token",data.token);
+          window.location.reload();
         },
         (err) => {
           console.log(err);
