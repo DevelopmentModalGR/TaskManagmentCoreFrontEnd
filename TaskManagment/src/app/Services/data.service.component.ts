@@ -38,7 +38,9 @@ export class DataService {
     }
 
     createUser(data: any) {
-        return this.http.post(`${this.url}/users/newuser`, data, { headers: this.composeHeaders() });
+
+        return this.http.post(`${this.url}/users/newuser`, data);
+
     }
 
     resetPassword(data: any) {

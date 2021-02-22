@@ -28,17 +28,18 @@
       <div id="inputdiv">
         <input class="uk-input uk-form-large" formControlName="confirmPassword" type="password" placeholder="Confirme sua Senha"  [ngClass]="{'uk-form-danger': (!form.controls.password.valid && !form.controls.password.pristine) }">
     </div>
+
     <br>
     <div id="inputdiv">
-        <input class="uk-input uk-form-large" formControlName="companyName" type="text" placeholder="Nome da Sua Empresa" [ngClass]="{'uk-form-danger': (!form.controls.companyName.valid && !form.controls.companyName.pristine) }">
+        <input class="uk-input uk-form-large" formControlName="companyId" type="number" placeholder="Id Empresa" [ngClass]="{'uk-form-danger': (!form.controls.companyId.valid && !form.controls.companyId.pristine) }">
     </div>
     <br>
-    <div id="inputdiv">
+<!--     <div id="inputdiv">
       <input class="uk-input uk-form-large" formControlName="cnpj" type="text" placeholder="CNPJ"  [ngClass]="{'uk-form-danger': (!form.controls.cnpj.valid && !form.controls.cnpj.pristine) }">
-    </div>
+    </div> -->
 
       <div class="uk-margin uk-text-center">
-        <button [routerLink]="['/']" class="uk-button uk-button-primary uk-button-large" [disabled]="form.invalid" (click)="submit()">CADASTRAR</button>
+        <button [routerLink]="['/']" class="uk-button uk-button-primary uk-button-large" [disabled]="form.invalid"  (click)="submit()">CADASTRAR</button>
       </div>
   </div>
 </form>

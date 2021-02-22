@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Company } from './../../Models/company.model';
+import { ToastrService } from 'ngx-toastr';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/Models/user.model';
@@ -12,11 +14,17 @@ import { Security } from 'src/app/Utils/security.util.component';
 })
 export class SignupPageComponent implements OnInit {
 
-  public form: FormGroup;
+  public form!: FormGroup;
   public busy = false;
+  public user!: User;
 
 
-  constructor(private router: Router, private service: DataService, private fb: FormBuilder) {
+
+  constructor(private router: Router, private service: DataService, private fb: FormBuilder, private toastr: ToastrService) {
+    /* this.user.companyId = 1; this.user.isActive = true; this.user.isAdmin = false; this.user.role = "employee"; */
+
+
+
     this.form = this.fb.group({
       name: ['', Validators.compose([
         Validators.minLength(3),
@@ -33,60 +41,61 @@ export class SignupPageComponent implements OnInit {
         Validators.maxLength(30),
         Validators.required
       ])],
-      companyName: ['', Validators.compose([
-        Validators.minLength(4),
+      confirmPassword: ['', Validators.compose([
+        Validators.minLength(6),
         Validators.maxLength(30),
         Validators.required
       ])],
-      cnpj: ['', Validators.compose([
-        Validators.minLength(12),
-        Validators.maxLength(14),
+      companyId: ['', Validators.compose([
+        Validators.minLength(6),
+        Validators.maxLength(30),
         Validators.required
-      ])]
+      ])],
+      isActive: ['', Validators.compose([
+        Validators.minLength(6),
+        Validators.maxLength(30)
+      ])],
+      role: ['', Validators.compose([
+        Validators.minLength(6),
+        Validators.maxLength(30)
+      ])],
     });
   }
 
   ngOnInit(): void {
-    const token = Security.getToken();
-    if (token) {
-      this.busy = true;
-      this
-        .service
-        .refreshToken()
-        .subscribe(
-          (data: any) => {
-            this.busy = false;
-            this.setUser(data.customer, data.token);
-          },
-          (err) => {
-            localStorage.clear();
-            this.busy = false;
-          }
-        );
-    }
+
   }
 
+/*   checkPasswords(group: FormGroup) { // here we have the 'passwords' group
+  const password = group.get('password').value;
+  const confirmPassword = group.get('confirmPassword').value;
+
+  return password === confirmPassword ? null : { notSame: true }
+} */
 
   submit() {
+    this.form.patchValue({isActive: 1,role: "employee"})
     this.busy = true;
     this
       .service
-      .authenticate(this.form.value)
+      .createUser(this.form.value)
       .subscribe(
         (data: any) => {
+          console.log(this.form.value);
           this.busy = false;
-          this.setUser(data.user, data.token);
+          this.toastr.success(data.message, 'Cadastro Efetuado com Sucesso!');
         },
-        (err) => {
+        (err: any) => {
           console.log(err);
           this.busy = false;
+          this.toastr.error('Erro ao Efetuar Cadastro!');
         }
       );
   }
 
-  setUser(user: User, token: string) {
+/*   setUser(user: User, token: string) {
     Security.set(user, token);
     this.router.navigate(['/']);
   }
-
+ */
 }

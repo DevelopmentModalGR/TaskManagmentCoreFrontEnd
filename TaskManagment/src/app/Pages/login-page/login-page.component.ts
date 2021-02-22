@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/Models/user.model';
 import { DataService } from 'src/app/Services/data.service.component';
 import { Security } from 'src/app/Utils/security.util.component';
@@ -14,9 +15,9 @@ import { Security } from 'src/app/Utils/security.util.component';
 export class LoginPageComponent implements OnInit {
   public form: FormGroup;
   public busy = false;
+  public user!: User;
 
-
-  constructor(private router: Router, private service: DataService, private fb: FormBuilder) {
+  constructor(private router: Router, private service: DataService, private fb: FormBuilder, private toastr: ToastrService) {
     this.form = this.fb.group({
       email: ['', Validators.compose([
         Validators.minLength(7),
@@ -32,25 +33,15 @@ export class LoginPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    /* const token = Security.getToken();
-    if (token) {
-      this.busy = true;
-      this
-        .service
-        .refreshToken()
-        .subscribe(
-          (data: any) => {
-            this.busy = false;
-            this.setUser(data.customer, data.token);
-          },
-          (err) => {
-            localStorage.clear();
-            this.busy = false;
-          }
-        );
-    } */
+    this.user = Security.getUser();
+    this.busy = true;
+    this.delay(5000);
+    this.busy = false;
   }
 
+   delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
 
   submit() {
     this.busy = true;
@@ -58,15 +49,20 @@ export class LoginPageComponent implements OnInit {
       .service
       .authenticate(this.form.value)
       .subscribe(
-        (data: any) => {
-          this.busy = false;
+        async (data: any) => {
+          await this.delay(2300);
+          this.toastr.success('Bem Vindo! ', 'Login com Sucesso!');
           this.setUser(data.user, data.token);
-          window.localStorage.setItem("token",data.token);
+          this.busy = false;
+          await this.delay(800);
+          this.router.navigate(['/']);
           window.location.reload();
         },
         (err) => {
           console.log(err);
           this.busy = false;
+          this.toastr.error('', 'Usuario ou Senha Invalidos!');
+          this.router.navigate(['/login']);
         }
       );
   }

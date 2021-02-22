@@ -14,10 +14,14 @@
             <div class="uk-navbar-right">
                 <ul class="uk-navbar-nav">
                     <li>
-                        <a [routerLink]="['/login']">
+                        <a *ngIf="user == null" [routerLink]="['/login']">
                             <span class="uk-icon uk-margin-small-right" uk-icon="icon: user"></span>
                            {{user?.name}}
                         </a>
+                        <a *ngIf="user != null" (click)="ShowUser()">
+                          <span class="uk-icon uk-margin-small-right" uk-icon="icon: user"></span>
+                         {{user?.name}}
+                      </a>
                     </li>
                     <li>
                          <a (click)="Logout()">
