@@ -31,6 +31,7 @@ import { TasksPageComponent } from './Pages/tasks-page/tasks-page.component';
     TasksPageComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,

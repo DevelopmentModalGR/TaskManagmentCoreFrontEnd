@@ -9,13 +9,13 @@ import { Security } from 'src/app/Utils/security.util.component';
 })
 export class DataService {
 
-    public url = 'https://localhost:3000/v1';
+    public url = 'https://localhost:5001';
 
     constructor(private http: HttpClient) { }
 
     public composeHeaders() {
         const token = Security.getToken();
-        const headers = new HttpHeaders().set('Authorization', 'bearer ${token}');
+        const headers = new HttpHeaders().set('Authorization', `bearer ${token}`); // template literals
         return headers;
     }
 
@@ -24,7 +24,9 @@ export class DataService {
     }
 
     authenticate(data: any) {
-        return this.http.post(`${this.url}/users/login`, data);
+      console.log("teste");
+      return this.http.post(`${this.url}/users/login`, data);
+
     }
 
     refreshToken() {
@@ -36,7 +38,9 @@ export class DataService {
     }
 
     createUser(data: any) {
-        return this.http.post(`${this.url}/users/newuser`, data, { headers: this.composeHeaders() });
+
+        return this.http.post(`${this.url}/users/newuser`, data);
+
     }
 
     resetPassword(data: any) {

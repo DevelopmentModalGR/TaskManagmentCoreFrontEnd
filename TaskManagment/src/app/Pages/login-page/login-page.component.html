@@ -1,7 +1,4 @@
 <h1></h1>
-
-<app-loading *ngIf="busy"></app-loading>
-
 <div id="logodiv">
   <img
     src="https://github.com/DevelopmentModalGR/TaskManagmentCoreFrontEnd/blob/main/Images/logo.png?raw=true"
@@ -9,6 +6,8 @@
     id="logo"
   />
 </div>
+
+<app-loading *ngIf="busy"></app-loading>
 
 
 <br>
@@ -41,13 +40,13 @@
         </div>
 
       <div class="uk-margin uk-text-center">
-        <button [routerLink]="['/']" class="uk-button uk-button-primary uk-button-large" [disabled]="form.invalid" (click)="submit()">Entrar</button>
+        <button class="uk-button uk-button-primary uk-button-large" [disabled]="form.invalid"  (click)="submit()">Entrar</button>
     </div>
   </div>
 </form>
 
 
-
+<!-- [routerLink]="['/']"  -->
 
 
 
