@@ -1,0 +1,80 @@
+<div class="margin-center">
+<div class="uk-card uk-card-default uk-width-1-2@m uk-align-center">
+  <div class="uk-card-header">
+      <div class="uk-grid-small uk-flex-middle" uk-grid>
+          <div class="uk-width-auto">
+              <img class="uk-border-circle" width="180" height="150" src="https://picsum.photos/180/150">
+          </div>
+          <div class="uk-width-expand">
+              <h3 class="uk-card-title uk-margin-remove-bottom">{{user.name}}</h3>
+              <p class="uk-text-meta uk-margin-remove-top"> <strong>Companhia: </strong> {{user.company.name}} </p>
+
+
+                <div *ngIf="showDiv.showDepart"  (click)="showDiv.showDepart = false" class="uk-card uk-card-hover uk-card-body uk-align-center margin-center">
+                  <p><strong>Departamentos: </strong></p>
+                  <p *ngFor="let item of user.departments" > {{item.name}} </p>
+                </div>
+
+
+                    <button *ngIf="!showDiv.showDepart" class="uk-button uk-button-default uk-align-center" id="margin-button" (click)="showDiv.showDepart = !showDiv.showDepart">
+                      <span class="uk-icon uk-margin-small-right" uk-icon="icon: users"></span>
+                    Departamentos
+                  </button>
+          </div>
+      </div>
+  </div>
+
+  <div class="uk-card-body">
+
+    <p class="uk-text-meta uk-margin-remove-top"> <strong> Email: </strong>{{user.email}}</p>
+    <p class="uk-text-meta uk-margin-remove-top"> <strong> Cargo: </strong>{{user.role}}</p>
+
+      <p>Lorema ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+  </div>
+  <div class="uk-card-footer">
+
+    <button *ngIf="!showDiv.showInfo" class="uk-button uk-button-default uk-align-center" (click)="showDiv.showInfo = !showDiv.showInfo">
+      <span class="uk-icon uk-margin-small-right" uk-icon="icon: info"></span>
+  Alterar Informações
+  </button>
+
+
+  <br>
+<form [formGroup]="form" *ngIf="showDiv.showInfo" >
+  <div id="form">
+
+    <div id="inputdiv">
+          <input class="uk-input uk-form-large" formControlName="name" type="text" placeholder="Nome Completo"  [ngClass]="{'uk-form-danger': (!form.controls.name.valid && !form.controls.name.pristine) }">
+    </div>
+      <br>
+    <div id="inputdiv">
+        <input class="uk-input uk-form-large" formControlName="email" type="email" placeholder="Email" [ngClass]="{'uk-form-danger': (!form.controls.email.valid && !form.controls.email.pristine) }">
+    </div>
+      <br>
+    <div id="inputdiv">
+          <input class="uk-input uk-form-large" formControlName="password" type="password" placeholder="Senha" [ngClass]="{'uk-form-danger': (!form.controls.password.valid && !form.controls.password.pristine) }">
+    </div>
+      <br>
+      <div id="inputdiv">
+        <input class="uk-input uk-form-large"  formControlName="confirmPassword" type="password" placeholder="Confirme sua Senha"  [ngClass]="{'uk-form-danger': (!form.controls.password.valid && !form.controls.password.pristine) }">
+    </div>
+    <br>
+
+
+    <div class="uk-margin uk-text-center">
+      <button (click)="showDiv.showInfo = false" class="uk-button uk-button-danger uk-button-large">Descartar Alterações</button>
+    </div>
+      <div class="uk-margin uk-text-center">
+        <button (click)="showDiv.showInfo = false" class="uk-button uk-button-primary uk-button-large" [disabled]="form.invalid"  (click)="submit()">Salvar Alterações</button>
+      </div>
+  </div>
+</form>
+
+  </div>
+</div>
+</div>
+
+
+
+
+

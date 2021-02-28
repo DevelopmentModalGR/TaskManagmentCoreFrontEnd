@@ -1,3 +1,4 @@
+import { Utilities } from './../../../Utils/utilities.util.component';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { Security } from 'src/app/Utils/security.util.component';
 import { Component, OnInit } from '@angular/core';
@@ -11,6 +12,7 @@ import { User } from 'src/app/Models/user.model';
 })
 export class NavbarComponent implements OnInit {
   public user!: User;
+  public LogoUrl = '../assets/logo.png';
 
   constructor(private router: Router, private toastr: ToastrService) { }
 
@@ -25,12 +27,20 @@ export class NavbarComponent implements OnInit {
   }
   Teste(){
     console.log(this.user.name);
-    console.log(Security.getUser())
+    console.log(Security.getUser());
+    console.log(Utilities.companies)
   }
 
   ShowUser() {
     this.toastr.success( this.user.name ,'Logado Como:');
     console.log(this.user.name);
   }
+
+  ToUserPage(){
+    Utilities.setUser(this.user);
+    this.router.navigate(['/userpage']);
+    console.log(this.user);
+  }
+
 
 }

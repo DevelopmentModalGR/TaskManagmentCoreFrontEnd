@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tasks-page.component.css']
 })
 export class TasksPageComponent implements OnInit {
+  public LogoUrl = '../assets/logo.png';
 
   constructor() { }
 

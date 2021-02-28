@@ -1,4 +1,4 @@
-
+import { UserCardComponent } from './Components/User/user-card/user-card.component';
 import { DataService } from 'src/app/Services/data.service.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -18,6 +18,11 @@ import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupPageComponent } from './Pages/signup-page/signup-page.component';
 import { TasksPageComponent } from './Pages/tasks-page/tasks-page.component';
+import { UtilServices } from './Services/utilServices.service';
+import { UserPageComponent } from './Pages/user-page/user-page.component';
+import { LogoComponent } from './Components/Shared/logo/logo.component';
+
+
 
 @NgModule({
   declarations: [
@@ -28,7 +33,10 @@ import { TasksPageComponent } from './Pages/tasks-page/tasks-page.component';
     FramePageComponent,
     LoadingComponent,
     SignupPageComponent,
-    TasksPageComponent
+    TasksPageComponent,
+    UserPageComponent,
+    LogoComponent,
+    UserCardComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +47,7 @@ import { TasksPageComponent } from './Pages/tasks-page/tasks-page.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],
-  providers: [DataService, AuthService],
+  providers: [DataService, AuthService, UtilServices],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

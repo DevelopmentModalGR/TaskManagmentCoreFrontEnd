@@ -3,11 +3,11 @@ import { Department } from './department.model';
 export class Checkout {
 
   constructor(
-    public Name: string,
-    public Department_: Department,
-    public Description: string,
-    public StartDate: Date,
-    public EndDate: Date,
-    public Jobs: Job[]
+    public name: string,
+    public department_: Department,
+    public description: string,
+    public startDate: Date,
+    public endDate: Date,
+    public jobs: Job[]
   ) {}
 }

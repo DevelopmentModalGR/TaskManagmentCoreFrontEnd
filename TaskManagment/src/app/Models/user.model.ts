@@ -13,7 +13,7 @@ export class User {
     public password: string,
     public role: string,
     public companyId: number,
-    public company_: Company,
+    public company: Company,
     public departments: Department[],
     public jobs: Job[]
   ) {}

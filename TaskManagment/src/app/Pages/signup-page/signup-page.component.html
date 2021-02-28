@@ -1,13 +1,9 @@
 <h1></h1>
 
+<app-logo></app-logo>
 <app-loading *ngIf="busy"></app-loading>
 
-<div id="logodiv">
-  <img
-    src="https://github.com/DevelopmentModalGR/TaskManagmentCoreFrontEnd/blob/main/Images/logo.png?raw=true"
-    alt="Logotipo da empresa"
-    id="logo"/>
-</div>
+
 
 <br>
 <form [formGroup]="form" *ngIf="!busy">
@@ -26,20 +22,30 @@
     </div>
       <br>
       <div id="inputdiv">
-        <input class="uk-input uk-form-large" formControlName="confirmPassword" type="password" placeholder="Confirme sua Senha"  [ngClass]="{'uk-form-danger': (!form.controls.password.valid && !form.controls.password.pristine) }">
+        <input class="uk-input uk-form-large"  formControlName="confirmPassword" type="password" placeholder="Confirme sua Senha"  [ngClass]="{'uk-form-danger': (!form.controls.password.valid && !form.controls.password.pristine) }">
+    </div>
+    <br>
+
+    <div id="inputdiv">
+    <select class="form-select form-select-sm uk-form-large" id="select"  formControlName="companyId"  placeholder="Confirme sua Senha"  [ngClass]="{'uk-form-danger': (!form.controls.companyId.valid && !form.controls.companyId.pristine) }">
+      <option selected> --Selecionar Empresa-- </option>
+      <option *ngFor="let item of companies" [value]="item.id"> {{item.name}} </option>
+    </select>
     </div>
 
-    <br>
-    <div id="inputdiv">
-        <input class="uk-input uk-form-large" formControlName="companyId" type="number" placeholder="Id Empresa" [ngClass]="{'uk-form-danger': (!form.controls.companyId.valid && !form.controls.companyId.pristine) }">
-    </div>
-    <br>
+
 <!--     <div id="inputdiv">
       <input class="uk-input uk-form-large" formControlName="cnpj" type="text" placeholder="CNPJ"  [ngClass]="{'uk-form-danger': (!form.controls.cnpj.valid && !form.controls.cnpj.pristine) }">
     </div> -->
 
       <div class="uk-margin uk-text-center">
-        <button [routerLink]="['/']" class="uk-button uk-button-primary uk-button-large" [disabled]="form.invalid"  (click)="submit()">CADASTRAR</button>
+        <button  [routerLink]="['/']" class="uk-button uk-button-primary uk-button-large" [disabled]="form.invalid"  (click)="submit()">CADASTRAR</button>
       </div>
   </div>
 </form>
+
+<div>
+  <button (click)="teste()"> Teste</button>
+</div>
+
+

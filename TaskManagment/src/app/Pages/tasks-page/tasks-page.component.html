@@ -1,12 +1,21 @@
 <div>
     <a href="https://modalgr.com.br">
-        <img src="https://github.com/DevelopmentModalGR/TaskManagmentCoreFrontEnd/blob/main/Images/logo.png?raw=true" alt="Logotipo da empresa" width="150" height="50">
+        <img [src]="LogoUrl" alt="Logotipo da empresa" alt="Logotipo da empresa" width="150" height="50">
     </a>
  </div>
+
  <div>
-    <h1 id="tituloTask">  TAREFAS  </h1>
-    <label id="lblTask" for= "text">  O que você procura?  </label>    
-    <button id= "btnTask"> Nova tarefa </button>
+    <h1 id="margin-sm-center">  TAREFAS  </h1>
+    <ul>
+      <a>
+        <label id="lbl-task">  O que você procura?  </label>
+      </a>
+      <a class="margin-sm-left">
+         <button id= "btn-task"> Nova tarefa </button>
+      </a>
+    </ul>
+
+
  </div>
 
  <nav class="uk-navbar-container" uk-navbar>
