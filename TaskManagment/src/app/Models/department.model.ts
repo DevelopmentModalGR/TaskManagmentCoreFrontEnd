@@ -3,8 +3,8 @@ import { Checkout } from './checkout.model';
 
 export class Department {
   constructor(
-    public Name: string,
-    public CheckoutProcesses: Checkout[],
-    public Users: User[],
+    public name: string,
+    public checkoutProcesses: Checkout[],
+    public users: User[],
   ){}
 }

@@ -1,3 +1,4 @@
+import { UserPageComponent } from './Pages/user-page/user-page.component';
 import { SignupPageComponent } from './Pages/signup-page/signup-page.component';
 
 import { FramePageComponent } from './Pages/master/master.component';
@@ -15,7 +16,9 @@ const routes: Routes = [{
     { path: '', component: HomePageComponent},
     { path: 'login', component: LoginPageComponent,/* canActivate: [AuthService] */},
     { path: 'tasks', component: TasksPageComponent},
-    { path: 'signup', component: SignupPageComponent}
+    { path: 'signup', component: SignupPageComponent},
+    { path: 'userpage', component: UserPageComponent}
+
   ]
 }];
 

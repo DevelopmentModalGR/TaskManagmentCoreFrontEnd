@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+.margin-center-sm {
+  margin-left: 50%;
+}
+
+.margin-top-sm{
+  margin-top: 1%;
+}
+
+#logodiv {
+  margin: auto;
+  width: 25%;
+}

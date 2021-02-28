@@ -1,3 +1,4 @@
+import { UtilServices } from './../../Services/utilServices.service';
 import { Company } from './../../Models/company.model';
 import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit, NgModule } from '@angular/core';
@@ -6,6 +7,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/Models/user.model';
 import { DataService } from 'src/app/Services/data.service.component';
 import { Security } from 'src/app/Utils/security.util.component';
+import { Utilities } from 'src/app/Utils/utilities.util.component';
 
 @Component({
   selector: 'app-signup-page',
@@ -16,14 +18,12 @@ export class SignupPageComponent implements OnInit {
 
   public form!: FormGroup;
   public busy = false;
+  public password!: string;
+  public passwordConfirm!: string;
   public user!: User;
+  public companies!: Company[];
 
-
-
-  constructor(private router: Router, private service: DataService, private fb: FormBuilder, private toastr: ToastrService) {
-    /* this.user.companyId = 1; this.user.isActive = true; this.user.isAdmin = false; this.user.role = "employee"; */
-
-
+  constructor(private router: Router, private service: DataService, private fb: FormBuilder, private toastr: ToastrService,private util: UtilServices ) {
 
     this.form = this.fb.group({
       name: ['', Validators.compose([
@@ -46,9 +46,7 @@ export class SignupPageComponent implements OnInit {
         Validators.maxLength(30),
         Validators.required
       ])],
-      companyId: ['', Validators.compose([
-        Validators.minLength(6),
-        Validators.maxLength(30),
+      companyId:  ['', Validators.compose([
         Validators.required
       ])],
       isActive: ['', Validators.compose([
@@ -63,15 +61,22 @@ export class SignupPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const mail = Utilities.GetSignUpEmail();
+    var myJSON = JSON.stringify(mail);
 
+    if(mail == null){
+        this.router.navigate(['/']);
+     }
+     else{
+        this.form.patchValue({email: myJSON.substring(10, myJSON.length - 2)});
+     }
+    
+    this.setCompanies();
+    console.log(this.companies)
+    this.busy = true;
+    this.util.delay(5000)
+    this.busy = false;
   }
-
-/*   checkPasswords(group: FormGroup) { // here we have the 'passwords' group
-  const password = group.get('password').value;
-  const confirmPassword = group.get('confirmPassword').value;
-
-  return password === confirmPassword ? null : { notSame: true }
-} */
 
   submit() {
     this.form.patchValue({isActive: 1,role: "employee"})
@@ -80,7 +85,7 @@ export class SignupPageComponent implements OnInit {
       .service
       .createUser(this.form.value)
       .subscribe(
-        (data: any) => {
+        async (data: any) => {
           console.log(this.form.value);
           this.busy = false;
           this.toastr.success(data.message, 'Cadastro Efetuado com Sucesso!');
@@ -93,9 +98,23 @@ export class SignupPageComponent implements OnInit {
       );
   }
 
+    setCompanies() {
+    this.service.getCompanies().subscribe((comp: Company[]) => {
+      this.companies = comp;
+    });
+  }
+
+  teste(){
+    console.log(this.companies);
+    console.log(this.form.value);
+    console.log(Utilities.GetSignUpEmail());
+  }
 /*   setUser(user: User, token: string) {
     Security.set(user, token);
     this.router.navigate(['/']);
   }
  */
 }
+
+
+

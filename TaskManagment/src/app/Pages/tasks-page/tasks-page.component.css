@@ -1,8 +1,12 @@
-#tituloTask {
+#margin-sm-center {
 
     text-align: center;
 }
-#lblTask {
-  
+#lbl-task {
+
     margin-top: 1px;
+}
+
+.margin-sm-left{
+  margin-left: 5%;
 }
