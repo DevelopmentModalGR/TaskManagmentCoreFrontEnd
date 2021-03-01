@@ -11,13 +11,14 @@ import { UtilServices } from 'src/app/Services/utilServices.service';
   templateUrl: './user-card.component.html',
   styleUrls: ['./user-card.component.css']
 })
+
 export class UserCardComponent implements OnInit {
   public profilePicUrl = '../assets/profile-pic1.png';
   public user!: User;
   public form!: FormGroup;
 
 
-  constructor(private service: DataService, private fb: FormBuilder, private toastr: ToastrService,private util: UtilServices ) {
+  constructor(private service: DataService, private fb: FormBuilder, private toastr: ToastrService, private util: UtilServices ) {
     this.form = this.fb.group({
       name: ['', Validators.compose([
         Validators.minLength(3),
@@ -55,14 +56,6 @@ export class UserCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = Security.getUser();
-  }
-
-  AlterarInfo(){
-
-  }
-
-  MostrarDepartamentos(){
-
   }
 
   showDiv = {

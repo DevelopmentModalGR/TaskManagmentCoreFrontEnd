@@ -10,3 +10,19 @@
 .margin-sm-left{
   margin-left: 5%;
 }
+
+#inputdiv {
+  margin: auto;
+  width: 25%;
+}
+
+#select {
+  width: 73%;
+  height: 45px;
+  font-size: 20px;
+  text-align: center;
+}
+
+#name-font{
+font-size: 60px;
+}

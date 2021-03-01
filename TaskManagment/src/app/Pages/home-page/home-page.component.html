@@ -1,10 +1,10 @@
 <div >
-    <h1 id ="namePAGE">  </h1>
+  <div class="uk-animation-fade">
     <ul>
       <a href="https://modalgr.com.br">
         <img [src]="LogoUrl" alt="Logotipo da empresa" width="200" height="50">
       </a>
-        <a class="uk-align-right">
+        <a class="uk-align-right uk-animation-slide-right" tabindex="1">
           <!--   <button class="uk-button uk-button-primary"></button> -->
             <button *ngIf="user == null"  id="btnLOGIN" [routerLink]="['/login']" mat-flat-button>LOGIN</button>
         </a>
@@ -13,21 +13,21 @@
 <br>
 
     <div>
-      <h1 style="font-family: Book Antiqua" class="intro-container__main-title" id = "TextLOGIN"> Software que todo gestor deveria ter <br> <strong>  feito para uma melhor visão de resultados</strong></h1>
-      <p style="font-family: Book Antiqua" class="intro-container__deion" id= "text2Login">Solução completa para gestão de tarefas, projetos e do fluxo do trabalho. </p>
+      <h1 style="font-family: Book Antiqua" class="intro-container__main-title uk-animation-slide-left" id = "TextLOGIN"> Software que todo gestor deveria ter <br> <strong>  feito para uma melhor visão de resultados</strong></h1>
+      <p style="font-family: Book Antiqua" class="intro-container__deion uk-animation-slide-left" id= "text2Login">Solução completa para gestão de tarefas, projetos e do fluxo do trabalho. </p>
     </div>
 
     <br>
     <br>
 
      <div *ngIf="user == null">
-        <h1 style="font-family: Book Antiqua" id="nameCadastro" class="intro-container__deion"> Cadastre-se grátis </h1>
+        <h1 style="font-family: Book Antiqua" id="nameCadastro" class="intro-container__deion uk-animation-slide-left-medium"> Cadastre-se grátis </h1>
         <label for="Digite seu email"></label>
 
         <form [formGroup]="form">
-        <input class="uk-input uk-form-large" id="text-input" formControlName="email" type="email" placeholder="Insira seu Email"  [ngClass]="{'uk-form-danger': (!form.controls.email.valid && !form.controls.email.pristine) }">
+        <input class="uk-input uk-form-large uk-animation-slide-left" id="text-input" formControlName="email" type="email" placeholder="Insira seu Email"  [ngClass]="{'uk-form-danger': (!form.controls.email.valid && !form.controls.email.pristine) }">
 
-        <button id="button-cadastro" [routerLink]="['/signup']" mat-flat-button (click)="signUp()">CADASTRAR</button>
+        <button class="uk-animation-slide-left" id="button-cadastro" [routerLink]="['/signup']" mat-flat-button (click)="signUp()">CADASTRAR</button>
       </form>
       </div>
 

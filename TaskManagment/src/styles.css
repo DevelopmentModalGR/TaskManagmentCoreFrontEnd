@@ -12,3 +12,30 @@
   margin: auto;
   width: 25%;
 }
+
+.text-center{
+  text-align: center;
+}
+
+.text-left{
+  text-align: left;
+}
+
+.text-right{
+  text-align: right;
+}
+
+.center-testing{
+  border: 3px solid green;
+  padding: 10px;
+}
+
+#blue-font{
+  color: darkcyan;
+
+}
+
+.font-selected{
+  font-size: 30px;
+  font-weight: bold;
+}

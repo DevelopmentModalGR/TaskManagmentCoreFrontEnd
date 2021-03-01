@@ -21,6 +21,8 @@ import { TasksPageComponent } from './Pages/tasks-page/tasks-page.component';
 import { UtilServices } from './Services/utilServices.service';
 import { UserPageComponent } from './Pages/user-page/user-page.component';
 import { LogoComponent } from './Components/Shared/logo/logo.component';
+import { AboutPageComponent } from './Pages/about-page/about-page.component';
+import { TasksCardComponent } from './Components/User/tasks-card/tasks-card.component';
 
 
 
@@ -36,7 +38,9 @@ import { LogoComponent } from './Components/Shared/logo/logo.component';
     TasksPageComponent,
     UserPageComponent,
     LogoComponent,
-    UserCardComponent
+    UserCardComponent,
+    AboutPageComponent,
+    TasksCardComponent
   ],
   imports: [
     CommonModule,

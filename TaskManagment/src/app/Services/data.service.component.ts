@@ -40,7 +40,7 @@ export class DataService {
   }
 
   getCompanies(): Observable<Company[]>{
-    return this.http.get<Company[]>(`${this.url}/company`)   
+    return this.http.get<Company[]>(`${this.url}/company`);  
   }
 
   getProfile() {
