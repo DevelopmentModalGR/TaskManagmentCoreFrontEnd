@@ -1,30 +1,78 @@
-<div>
-    <a href="https://modalgr.com.br">
-        <img [src]="LogoUrl" alt="Logotipo da empresa" alt="Logotipo da empresa" width="150" height="50">
-    </a>
- </div>
+<div class="margin-center margin-top-sm">
+  <div class="uk-card uk-card-default uk-width-1-1@m uk-align-center">
+    <div class="uk-card-header uk-animation-toggle" tabindex="0" >
+        <div class="uk-grid-small uk-flex-middle uk-animation-toggle" tabindex="1" uk-grid>
 
- <div>
-    <h1 id="margin-sm-center">  TAREFAS  </h1>
-    <ul>
-      <a>
-        <label id="lbl-task">  O que você procura?  </label>
-      </a>
-      <a class="margin-sm-left">
-         <button id= "btn-task"> Nova tarefa </button>
-      </a>
-    </ul>
+            <div class="uk-width-auto">
+                <img class="uk-border-circle" width="180" height="150" src="https://picsum.photos/180/150">
+            </div>
+            <div class="uk-width-expand">
+                <h3 class=" uk-margin-remove-bottom text-left " id="name-font">{{user.name}}</h3>
+            </div>
+
+          </div>
+      </div>
+
+      <div class="uk-background-default">
+        <div class="uk-container">
+            <nav class="uk-navbar-container uk-navbar-transparent uk-margin" uk-navbar>
+                <div class="uk-navbar-left">
+                  <a [class.font-selected]="showDiv.showJobs" class="uk-navbar-item uk-logo" (click)="showDiv.showJobs = !showDiv.showJobs;showDiv.showJobs;">
+                    <span  uk-icon="icon: user; ratio: 1"></span>
+                    Tarefas Para Mim
+                  </a>
+                  <a class="uk-navbar-item uk-logo">
+                    <span uk-icon="icon: users; ratio: 1"></span>
+                    Tarefas Compartilhadas
+                  </a>
+                  <a class="uk-navbar-item uk-logo">
+                    <span uk-icon="icon: clock; ratio: 1"></span>
+                    Quadro de Horas
+                  </a>
 
 
- </div>
+                    </div>
+              </nav>
+          </div>
+        </div>
 
- <nav class="uk-navbar-container" uk-navbar>
-    <div class="uk-navbar-left">
-        <ul class="uk-navbar-nav">
-            <li id="quadros-li"><a> QUADROS </a></li>
-            <li id="equipes-li"><a> EQUIPES </a></li>
-            <li id="eu-li"><a> EU </a></li>
-            <li id="mural-li"><a> MURAL </a></li>
-        </ul>
+    <!--   <div class="uk-card uk-card-hover uk-card-body uk-align-center margin-center uk-animation-slide-top-small">
+        <form [formGroup]="form" >
+          <button  class="uk-button uk-button-default uk-align-center uk-animation-slide-top-small" id="margin-button" (click)="showDiv.showDepart = !showDiv.showDepart;showDiv.showDepart">
+            <span *ngIf="!showDiv.showDepart" class="uk-icon uk-margin-small-right" uk-icon="icon: chevron-right"> SELECIONAR DEPARTAMENTO </span>
+            <span *ngIf="showDiv.showDepart" class="uk-icon uk-margin-small-right" uk-icon="icon: chevron-down; ratio: 1"> SELECIONAR DEPARTAMENTO  </span>
+          </button>
+          <select *ngIf="showDiv.showDepart" class="uk-align-center form-select form-select-lg uk-form-large" id="select" formControlName="DepartmentId">
+              <option *ngFor="let item of user.departments" [value]="item.id"> {{item.name}} </option>
+            </select>
+          </form>
+        </div> -->
+
+      <div *ngIf="!showDiv.showInfo" class="uk-card-body uk-animation-slide-top-medium uk-animation-toggle " tabindex="2">
+
+        <div *ngIf="showDiv.showJobs" class="uk-container uk-animation-slide-top-small">
+          <div class="uk-child-width-1-6@m uk-grid-small uk-grid-match" uk-grid>
+              <div class="uk-width-1-2 uk-margin-small-bottom" *ngFor="let job of jobs$ ">
+                <app-tasks-card [job]="job"> </app-tasks-card>
+              </div>
+          </div>
+      </div>
+
+      </div>
+      <div class="uk-card-footer uk-animation-toggle" tabindex="2">
+
+      <!--   <p>Lorema ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p> -->
+
+      </div>
     </div>
-</nav>
+    </div>
+
+
+  <!--   <div>
+      <button (click)="teste()">Teste</button>
+    </div>
+ -->
+
+
+
+

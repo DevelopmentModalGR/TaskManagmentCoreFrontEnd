@@ -1,15 +1,18 @@
-<div *ngIf="user != null" class="uk-background-primary uk-light">
+<div class="uk-background-primary uk-light">
   <div class="uk-container">
-      <nav class="uk-navbar-container uk-navbar-transparent uk-margin" uk-navbar>
+      <nav class="uk-navbar-container uk-navbar-transparent uk-margin " uk-navbar="mode: click">
           <div class="uk-navbar-left">
             <a class="uk-navbar-item uk-logo" href="#">ITasker
               <span uk-icon="icon: home; ratio: 2"></span>
               </a>
+              <div *ngIf="user != null">
               <ul class="uk-navbar-nav">
                   <li><a [routerLink]="['/tasks']" routerLinkActive="uk-text-bold">Tasks</a></li>
-                  <li><a [routerLink]="['/']" routerLinkActive="uk-text-bold">Holder2</a></li>
+                  <li><a >Holder2</a></li>
                   <li><a (click)="Teste()">Holder3</a></li>
+                  <li><a [routerLink]="['/about']">Sobre Nós</a></li>
               </ul>
+              </div>
           </div>
           <div class="uk-navbar-right">
               <ul class="uk-navbar-nav">
@@ -23,7 +26,7 @@
                        {{user?.name}}
                     </a>
                   </li>
-                  <li>
+                  <li *ngIf="user != null">
                        <a (click)="Logout()">
                           <span class="uk-icon uk-margin-small-right" uk-icon="icon: sign-out"></span>
                        </a>

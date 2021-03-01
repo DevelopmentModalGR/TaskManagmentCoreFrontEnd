@@ -1,0 +1,17 @@
+<div class="uk-card uk-card-secondary uk-card-hover uk-animation-toggle ">
+  <div class="uk-card-media-top uk-text-center">
+  </div>
+  <div class="uk-card-body uk-animation-slide-top-small">
+      <h3 class="uk-card-title uk-width-auto"> {{ job.name }} </h3>
+      <p style="height: 50px;">{{ job.startDate }}</p>
+      <p *ngIf="job.status == 1" style="height: 50px;"> CRIADO </p>
+      <p *ngIf="job.status == 2" style="height: 50px;"> INICIADO </p>
+      <p *ngIf="job.status == 3" style="height: 50px;"> PAUSADO </p>
+      <p *ngIf="job.status == 4" style="height: 50px;"> CONCLUIDO </p>
+
+      <button class="uk-button uk-button-default">
+          <span class="uk-icon uk-margin-small-right" uk-icon="icon: play"></span>
+          Iniciar
+      </button>
+  </div>
+</div>

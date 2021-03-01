@@ -4,7 +4,7 @@ export class Checkout {
 
   constructor(
     public name: string,
-    public department_: Department,
+    public department: Department,
     public description: string,
     public startDate: Date,
     public endDate: Date,

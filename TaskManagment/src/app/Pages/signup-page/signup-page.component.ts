@@ -70,7 +70,7 @@ export class SignupPageComponent implements OnInit {
      else{
         this.form.patchValue({email: myJSON.substring(10, myJSON.length - 2)});
      }
-    
+
     this.setCompanies();
     console.log(this.companies)
     this.busy = true;
@@ -96,6 +96,31 @@ export class SignupPageComponent implements OnInit {
           this.toastr.error('Erro ao Efetuar Cadastro!');
         }
       );
+      this.login();
+  }
+
+  login() {
+    this.busy = true;
+    this
+      .service
+      .authenticate(this.form.value)
+      .subscribe(
+        async (data: any) => {
+          await this.util.delay(2300);
+          this.toastr.success('', 'Bem Vindo!');
+          this.setUser(data.user, data.token);
+          this.busy = false;
+          await this.util.delay(800);
+          this.router.navigate(['/']);
+          window.location.reload();
+        },
+        (err) => {
+          console.log(err);
+          this.busy = false;
+          this.toastr.error('', 'Usuario ou Senha Invalidos!');
+          this.router.navigate(['/login']);
+        }
+      );
   }
 
     setCompanies() {
@@ -109,11 +134,12 @@ export class SignupPageComponent implements OnInit {
     console.log(this.form.value);
     console.log(Utilities.GetSignUpEmail());
   }
-/*   setUser(user: User, token: string) {
+
+  setUser(user: User, token: string) {
     Security.set(user, token);
     this.router.navigate(['/']);
   }
- */
+
 }
 
 

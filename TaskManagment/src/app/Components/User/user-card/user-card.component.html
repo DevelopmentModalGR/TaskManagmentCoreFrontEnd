@@ -1,46 +1,48 @@
 <div class="margin-center">
 <div class="uk-card uk-card-default uk-width-1-2@m uk-align-center">
-  <div class="uk-card-header">
-      <div class="uk-grid-small uk-flex-middle" uk-grid>
+  <div class="uk-card-header uk-animation-toggle" tabindex="0" >
+      <div class="uk-grid-small uk-flex-middle uk-animation-toggle" tabindex="1" uk-grid>
+
           <div class="uk-width-auto">
               <img class="uk-border-circle" width="180" height="150" src="https://picsum.photos/180/150">
           </div>
           <div class="uk-width-expand">
-              <h3 class="uk-card-title uk-margin-remove-bottom">{{user.name}}</h3>
+              <h3 class="uk-card-title uk-margin-remove-bottom uk-align-center">{{user.name}}</h3>
               <p class="uk-text-meta uk-margin-remove-top"> <strong>Companhia: </strong> {{user.company.name}} </p>
 
-
-                <div *ngIf="showDiv.showDepart"  (click)="showDiv.showDepart = false" class="uk-card uk-card-hover uk-card-body uk-align-center margin-center">
-                  <p><strong>Departamentos: </strong></p>
-                  <p *ngFor="let item of user.departments" > {{item.name}} </p>
-                </div>
-
-
-                    <button *ngIf="!showDiv.showDepart" class="uk-button uk-button-default uk-align-center" id="margin-button" (click)="showDiv.showDepart = !showDiv.showDepart">
+                  <button *ngIf="!showDiv.showDepart" class="uk-button uk-button-default uk-align-center uk-animation-slide-top-small" id="margin-button" (click)="showDiv.showDepart = !showDiv.showDepart">
                       <span class="uk-icon uk-margin-small-right" uk-icon="icon: users"></span>
                     Departamentos
                   </button>
-          </div>
+
+                  <div *ngIf="showDiv.showDepart"  (click)="showDiv.showDepart = false" class="uk-card uk-card-hover uk-card-body uk-align-center margin-center uk-animation-slide-top-small">
+
+                    <p><strong><span class="uk-icon uk-margin-small-right" uk-icon="icon: users"></span>DEPARTAMENTOS: </strong></p>
+
+                    <p *ngFor="let item of user.departments" > {{item.name}} </p>
+                  </div>
+            </div>
+
       </div>
   </div>
 
-  <div class="uk-card-body">
+  <div *ngIf="!showDiv.showInfo" class="uk-card-body uk-animation-slide-top-medium uk-animation-toggle" tabindex="2">
 
-    <p class="uk-text-meta uk-margin-remove-top"> <strong> Email: </strong>{{user.email}}</p>
-    <p class="uk-text-meta uk-margin-remove-top"> <strong> Cargo: </strong>{{user.role}}</p>
+    <p class="uk-text-meta uk-margin-remove-top uk-animation-fade-small"> <strong> Email: </strong>{{user.email}}</p>
+    <p class="uk-text-meta uk-margin-remove-top uk-animation-fade-small"> <strong> Cargo: </strong>{{user.role}}</p>
 
       <p>Lorema ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
   </div>
-  <div class="uk-card-footer">
+  <div class="uk-card-footer uk-animation-toggle" tabindex="2">
 
-    <button *ngIf="!showDiv.showInfo" class="uk-button uk-button-default uk-align-center" (click)="showDiv.showInfo = !showDiv.showInfo">
+    <button *ngIf="!showDiv.showInfo" class="uk-button uk-button-default uk-align-center uk-animation-slide-top-medium" (click)="showDiv.showInfo = !showDiv.showInfo">
       <span class="uk-icon uk-margin-small-right" uk-icon="icon: info"></span>
   Alterar Informações
   </button>
 
 
   <br>
-<form [formGroup]="form" *ngIf="showDiv.showInfo" >
+<form [formGroup]="form" *ngIf="showDiv.showInfo" class="uk-animation-slide-bottom-medium">
   <div id="form">
 
     <div id="inputdiv">
