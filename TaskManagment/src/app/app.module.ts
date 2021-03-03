@@ -1,3 +1,4 @@
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { UserCardComponent } from './Components/User/user-card/user-card.component';
 import { DataService } from 'src/app/Services/data.service.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -23,7 +24,9 @@ import { UserPageComponent } from './Pages/user-page/user-page.component';
 import { LogoComponent } from './Components/Shared/logo/logo.component';
 import { AboutPageComponent } from './Pages/about-page/about-page.component';
 import { TasksCardComponent } from './Components/User/tasks-card/tasks-card.component';
-
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { InfiniteScrollComponent } from './Components/Shared/infinite-scroll-component/infinite-scroll-component.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -40,15 +43,18 @@ import { TasksCardComponent } from './Components/User/tasks-card/tasks-card.comp
     LogoComponent,
     UserCardComponent,
     AboutPageComponent,
-    TasksCardComponent
+    TasksCardComponent,
+    InfiniteScrollComponent
   ],
   imports: [
     CommonModule,
     BrowserModule,
+    FontAwesomeModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    InfiniteScrollModule,
     ToastrModule.forRoot()
   ],
   providers: [DataService, AuthService, UtilServices],

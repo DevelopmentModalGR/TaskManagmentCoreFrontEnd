@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
 import { Job } from 'src/app/Models/job.model';
+
 
 @Component({
   selector: 'app-tasks-card',
@@ -12,22 +12,20 @@ export class TasksCardComponent implements OnInit {
 
   @Input() job!: Job;
 
-  constructor(private toastr: ToastrService) { }
+
+  public showDiv = {
+    showStart: false,
+    showPause: false,
+  };
+  public mode = 'play';
+
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  /* addToCart() {
-    CartUtil.add(
-      this.product._id,
-      this.product.title,
-      1,
-      this.product.price,
-      this.product.images
-    )
-
-    this.toastr.success(`${this.product.title} adicionado ao carrinho`, 'Produto Adicionado');
-  } */
-
+  changeMode(mode: string) {
+    this.mode = mode;
+  }
 
 }

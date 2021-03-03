@@ -7,6 +7,7 @@ import { User } from 'src/app/Models/user.model';
 import { Security } from 'src/app/Utils/security.util.component';
 import { Company } from '../Models/company.model';
 import { CATCH_ERROR_VAR } from '@angular/compiler/src/output/output_ast';
+import { Job } from '../Models/job.model';
 
 @Injectable({
   providedIn: 'root',
@@ -39,8 +40,16 @@ export class DataService {
     return this.http.get<User[]>(`${this.url}/users`);
   }
 
+  getUserById(id: number): Observable<User> {
+    return this.http.get<User>(`${this.url}/users/${id}`);
+  }
+
+  getJobs(): Observable<Job[]> {
+    return this.http.get<Job[]>(`${this.url}/jobs`);
+  }
+
   getCompanies(): Observable<Company[]>{
-    return this.http.get<Company[]>(`${this.url}/company`);  
+    return this.http.get<Company[]>(`${this.url}/company`);
   }
 
   getProfile() {

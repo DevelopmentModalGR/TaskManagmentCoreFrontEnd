@@ -17,18 +17,24 @@
         <div class="uk-container">
             <nav class="uk-navbar-container uk-navbar-transparent uk-margin" uk-navbar>
                 <div class="uk-navbar-left">
-                  <a [class.font-selected]="showDiv.showJobs" class="uk-navbar-item uk-logo" (click)="showDiv.showJobs = !showDiv.showJobs;showDiv.showJobs;">
+                  <div uk-tooltip="Mostrar Tarefas Designadas á você">
+                  <a [class.font-selected]="showDiv.showJobs === true" class="uk-navbar-item uk-logo" (click)="showDiv.showJobs = !showDiv.showJobs; showDiv.showShared && showDiv.showHours = showDiv.default">
                     <span  uk-icon="icon: user; ratio: 1"></span>
                     Tarefas Para Mim
                   </a>
-                  <a class="uk-navbar-item uk-logo">
-                    <span uk-icon="icon: users; ratio: 1"></span>
+                </div>
+                <div uk-tooltip="Mostrar todas as tarefas da sua companhia" class="uk-align-center">
+                  <a [class.font-selected]="showDiv.showShared === true" class="uk-navbar-item uk-logo" (click)="setLenght();showDiv.showShared = !showDiv.showShared; showDiv.showJobs && showDiv.showHours = showDiv.default">
+                    <span  uk-icon="icon: users; ratio: 1"></span>
                     Tarefas Compartilhadas
                   </a>
-                  <a class="uk-navbar-item uk-logo">
-                    <span uk-icon="icon: clock; ratio: 1"></span>
+                </div>
+                  <div uk-tooltip="Quadro de horas do mês">
+                  <a [class.font-selected]="showDiv.showHours === true" class="uk-navbar-item uk-logo" (click)="showDiv.showHours = !showDiv.showHours; showDiv.showJobs && showDiv.showShared = showDiv.default">
+                    <span  uk-icon="icon: clock; ratio: 1"></span>
                     Quadro de Horas
                   </a>
+                </div>
 
 
                     </div>
@@ -50,15 +56,33 @@
 
       <div *ngIf="!showDiv.showInfo" class="uk-card-body uk-animation-slide-top-medium uk-animation-toggle " tabindex="2">
 
+
         <div *ngIf="showDiv.showJobs" class="uk-container uk-animation-slide-top-small">
           <div class="uk-child-width-1-6@m uk-grid-small uk-grid-match" uk-grid>
-              <div class="uk-width-1-2 uk-margin-small-bottom" *ngFor="let job of jobs$ ">
-                <app-tasks-card [job]="job"> </app-tasks-card>
+              <div class="uk-width-1-2 uk-margin-small-bottom" *ngFor="let item of jobs$ ">
+                <app-tasks-card [job]="item"> </app-tasks-card>
               </div>
           </div>
       </div>
 
-      </div>
+      <div *ngIf="showDiv.showShared"
+        infinite-scroll
+        [infiniteScrollDistance]="scrollDistance"
+        [infiniteScrollUpDistance]="scrollUpDistance"
+        [infiniteScrollThrottle]="throttle"
+        (scrolled)="onScroll()">
+      <div  class="uk-container uk-animation-slide-top-small">
+        <div class="uk-child-width-1-6@m uk-grid-small uk-grid-match" uk-grid>
+            <div class="uk-width-1-2 uk-margin-small-bottom" *ngFor="let item of allJobs">
+
+              <app-tasks-card [job]="item"> </app-tasks-card>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div *ngIf="busy == true">
+    <app-loading></app-loading>
+  </div>
       <div class="uk-card-footer uk-animation-toggle" tabindex="2">
 
       <!--   <p>Lorema ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p> -->
@@ -68,10 +92,10 @@
     </div>
 
 
-  <!--   <div>
+    <div>
       <button (click)="teste()">Teste</button>
     </div>
- -->
+
 
 
 
