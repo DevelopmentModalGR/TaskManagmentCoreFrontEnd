@@ -1,3 +1,4 @@
+import { Utilities } from './../../Utils/utilities.util.component';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -21,6 +22,18 @@ export class TasksPageComponent implements OnInit {
   public user2!: User;
   public allJobs!: Job[];
   public busy = false;
+
+  public showDiv = {
+    showDepart: false,
+    showInfo: false,
+    showJobs: false,
+    showShared: false,
+    showHours: false,
+    previous: false,
+    current: false,
+    next: false,
+    default: false,
+  };
 
   //
 
@@ -60,19 +73,13 @@ export class TasksPageComponent implements OnInit {
     this.allJobs.length = this.sum;
   }
 
-  showDiv = {
-    showDepart: false,
-    showInfo: false,
-    showJobs: false,
-    showShared: false,
-    showHours: false,
-    previous: false,
-    current: false,
-    next: false,
-    default: false,
-  };
+
 
   submit() {}
+
+  changeLabels(){
+    console.log("changeLabels");
+  }
 
   teste() {
     console.log(Security.getUser());
@@ -93,16 +100,7 @@ export class TasksPageComponent implements OnInit {
       this.allJobs.length = this.total;
       this.sum = this.total;
     }
-
-
-    console.log("endindex abaixo ");console.log(endIndex);
-    console.log("alljobs index abaixo: ");console.log(this.allJobs.length);
     this.busy = false;
-
-/*     for (let i = 0; i <= endIndex; ++i) {
-      this.array.length = endIndex;
-      this.array.push(this.user.jobs[4]);
-    } */
   }
 
   appendItems(startIndex: any, endIndex: any) {
@@ -110,7 +108,7 @@ export class TasksPageComponent implements OnInit {
     console.log("entrou no appenditems");
   }
 
-  onScroll() {
+  async onScroll() {
     this.busy = true;
     console.log('scroll sucesso!');
     // add another 2 items
@@ -141,6 +139,40 @@ export class TasksPageComponent implements OnInit {
   setLenght(){
     console.log("entrou no setlenght");
     this.setJobs();
+  }
+
+  async changeLabel(option: any){
+
+    switch (option) {
+      case 0:
+        this.showDiv.showJobs = true;
+        this.showDiv.showShared = false;
+        this.showDiv.showHours = false;
+        this.busy = true;
+        await Utilities.delay(1200);
+        this.busy = false
+        break;
+        case 1:
+        this.showDiv.showJobs = false;
+        this.showDiv.showShared = true;
+        this.showDiv.showHours = false;
+        this.busy = true;
+        this.setLenght()
+        await Utilities.delay(1200);
+        this.busy = false
+        break;
+        case 2:
+        this.showDiv.showJobs = false;
+        this.showDiv.showShared = false;
+        this.showDiv.showHours = true;
+        this.busy = true;
+        await Utilities.delay(1200);
+        this.busy = false
+        break;
+
+      default:
+        break;
+    }
   }
 
 }
