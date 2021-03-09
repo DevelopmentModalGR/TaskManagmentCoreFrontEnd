@@ -2,14 +2,10 @@
   <div class="uk-card-media-top uk-text-center">
   </div>
   <div class="uk-card-body uk-animation-slide-top-small">
-      <h3 class="uk-card-title "> {{ job.name }} </h3>
-      <br *ngIf="job.name.length <= 28">
-      <p > <strong>INICIADO:</strong> {{job.startDate | date}}  {{job.startDate | date:'H:mm'}}</p>
-      <p > <strong>DECORRIDO: </strong> {{today| date}}  {{today | date:'H:mm'}}</p>
-      <p *ngIf="job.status == 1" style="height: 50px;"> CRIADO </p>
-      <p *ngIf="job.status == 2" style="height: 50px;"> INICIADO </p>
-      <p *ngIf="job.status == 3" style="height: 50px;"> PAUSADO </p>
-      <p *ngIf="job.status == 4" style="height: 50px;"> CONCLUIDO </p>
+      <h3 class="uk-card-title "> {{ checklist.name }} </h3>
+      <br *ngIf="checklist.name.length <= 28">
+      <p > <strong>INICIADO:</strong> {{checklist.startDate | date}}  {{checklist.startDate | date:'H:mm'}}</p>
+      <p > <strong>Tasks: </strong> {{checklist.jobs.length}}</p>
 
     <button class="uk-button uk-button-default add-button animate__animated animate__fadeInUp button" (click)="changeMode('pause')" *ngIf="mode =='play'">
       <i class="fas fa-play">

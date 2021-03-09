@@ -1,3 +1,4 @@
+import { Checkout } from './../Models/checkout.model';
 import { Observable } from 'rxjs';
 import { Companies } from './../Models/Companies';
 import { Injectable } from '@angular/core';
@@ -7,6 +8,7 @@ import { User } from 'src/app/Models/user.model';
 import { Security } from 'src/app/Utils/security.util.component';
 import { Company } from '../Models/company.model';
 import { CATCH_ERROR_VAR } from '@angular/compiler/src/output/output_ast';
+import { Job } from '../Models/job.model';
 
 @Injectable({
   providedIn: 'root',
@@ -39,8 +41,33 @@ export class DataService {
     return this.http.get<User[]>(`${this.url}/users`);
   }
 
+  getUserById(id: number): Observable<User> {
+    return this.http.get<User>(`${this.url}/users/${id}`);
+  }
+
+  getJobs(): Observable<Job[]> {
+    return this.http.get<Job[]>(`${this.url}/jobs`);
+  }
+
+  getPagedJobs(itemsNum: number): Observable<any> {
+    return this.http.get<any>(`${this.url}/jobs/Page/${itemsNum}`);
+  }
+
   getCompanies(): Observable<Company[]>{
-    return this.http.get<Company[]>(`${this.url}/company`);  
+    return this.http.get<Company[]>(`${this.url}/company`);
+  }
+
+  getChecklists(): Observable<Checkout[]>{
+    return this.http.get<Checkout[]>(`${this.url}/Checkout`);
+  }
+
+  getPagedChecklist(itemsNum: number): Observable<any> {
+    return this.http.get<any>(`${this.url}/checkout/Page/${itemsNum}`);
+  }
+
+
+  getPagenetedJobs(itemsNum: number): Observable<any> {
+    return this.http.get<any>(`${this.url}/jobs/Page/${itemsNum}`);
   }
 
   getProfile() {
