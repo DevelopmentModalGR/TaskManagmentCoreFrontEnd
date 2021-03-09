@@ -1,16 +1,14 @@
+import { Checkout } from './../../../Models/checkout.model';
 import { Component, Input, OnInit } from '@angular/core';
-import { Job } from 'src/app/Models/job.model';
-
 
 @Component({
-  selector: 'app-tasks-card',
-  templateUrl: './tasks-card.component.html',
-  styleUrls: ['./tasks-card.component.css']
+  selector: 'app-checklist-card',
+  templateUrl: './checklist-card.component.html',
+  styleUrls: ['./checklist-card.component.css']
 })
+export class ChecklistCardComponent{
 
-export class TasksCardComponent implements OnInit {
-
-  @Input() job!: Job;
+  @Input() checklist!: Checkout;
 
   public today: number = Date.now();
   public showDiv = {
@@ -20,9 +18,6 @@ export class TasksCardComponent implements OnInit {
   public mode = 'play';
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   changeMode(mode: string) {
     this.mode = mode;

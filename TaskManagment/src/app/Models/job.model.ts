@@ -8,6 +8,8 @@ export class Job {
     public  startDate: Date,
     public  endDate: Date,
     public  status: number,
-    public  users: User[]
+    public  users: User[],
+    public  items: any[],
+    public totalItemCount: number
   ){}
 }

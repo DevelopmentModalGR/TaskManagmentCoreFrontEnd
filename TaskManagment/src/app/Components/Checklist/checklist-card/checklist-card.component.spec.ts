@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TasksPageComponent } from './tasks-page.component';
+import { ChecklistCardComponent } from './checklist-card.component';
 
-describe('TasksPageComponent', () => {
-  let component: TasksPageComponent;
-  let fixture: ComponentFixture<TasksPageComponent>;
+describe('ChecklistCardComponent', () => {
+  let component: ChecklistCardComponent;
+  let fixture: ComponentFixture<ChecklistCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TasksPageComponent ]
+      declarations: [ ChecklistCardComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TasksPageComponent);
+    fixture = TestBed.createComponent(ChecklistCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

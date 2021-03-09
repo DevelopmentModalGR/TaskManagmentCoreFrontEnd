@@ -1,3 +1,4 @@
+import { Checkout } from './../Models/checkout.model';
 import { Observable } from 'rxjs';
 import { Companies } from './../Models/Companies';
 import { Injectable } from '@angular/core';
@@ -48,8 +49,25 @@ export class DataService {
     return this.http.get<Job[]>(`${this.url}/jobs`);
   }
 
+  getPagedJobs(itemsNum: number): Observable<any> {
+    return this.http.get<any>(`${this.url}/jobs/Page/${itemsNum}`);
+  }
+
   getCompanies(): Observable<Company[]>{
     return this.http.get<Company[]>(`${this.url}/company`);
+  }
+
+  getChecklists(): Observable<Checkout[]>{
+    return this.http.get<Checkout[]>(`${this.url}/Checkout`);
+  }
+
+  getPagedChecklist(itemsNum: number): Observable<any> {
+    return this.http.get<any>(`${this.url}/checkout/Page/${itemsNum}`);
+  }
+
+
+  getPagenetedJobs(itemsNum: number): Observable<any> {
+    return this.http.get<any>(`${this.url}/jobs/Page/${itemsNum}`);
   }
 
   getProfile() {

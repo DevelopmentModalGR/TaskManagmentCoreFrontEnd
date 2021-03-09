@@ -27,6 +27,8 @@ import { TasksCardComponent } from './Components/User/tasks-card/tasks-card.comp
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { InfiniteScrollComponent } from './Components/Shared/infinite-scroll-component/infinite-scroll-component.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ChecklistCardComponent } from './Components/Checklist/checklist-card/checklist-card.component';
+import { LoadingSmallComponent } from './Components/Shared/loading-small/loading-small.component';
 
 
 @NgModule({
@@ -44,7 +46,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     UserCardComponent,
     AboutPageComponent,
     TasksCardComponent,
-    InfiniteScrollComponent
+    InfiniteScrollComponent,
+    ChecklistCardComponent,
+    LoadingSmallComponent
   ],
   imports: [
     CommonModule,
