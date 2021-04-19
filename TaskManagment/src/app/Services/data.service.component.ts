@@ -49,8 +49,8 @@ export class DataService {
     return this.http.get<Job[]>(`${this.url}/jobs`);
   }
 
-  getPagedJobs(itemsNum: number): Observable<any> {
-    return this.http.get<any>(`${this.url}/jobs/Page/${itemsNum}`);
+  getPagedJobs(PageNum: number, itemsNum: number): Observable<any> {
+    return this.http.get<any>(`${this.url}/jobs/page/${PageNum}/${itemsNum}`);
   }
 
   getCompanies(): Observable<Company[]>{
@@ -58,11 +58,11 @@ export class DataService {
   }
 
   getChecklists(): Observable<Checkout[]>{
-    return this.http.get<Checkout[]>(`${this.url}/Checkout`);
+    return this.http.get<Checkout[]>(`${this.url}/Checkout/`);
   }
 
-  getPagedChecklist(itemsNum: number): Observable<any> {
-    return this.http.get<any>(`${this.url}/checkout/Page/${itemsNum}`);
+  getPagedChecklist(PageNum: number, itemsNum: number): Observable<any> {
+    return this.http.get<any>(`${this.url}/checkout/page/${PageNum}/${itemsNum}`);
   }
 
 
