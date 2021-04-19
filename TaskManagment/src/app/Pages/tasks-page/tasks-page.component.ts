@@ -40,6 +40,8 @@ export class TasksPageComponent implements OnInit {
 
   //Scroll Parameters
   Shareditems = 12;
+  ItemsPage = 1;
+  ChecklistPage = 1;
   ChecklistItems = 3;
   throttle = 150;
   scrollDistance = 1;
@@ -48,7 +50,7 @@ export class TasksPageComponent implements OnInit {
   scrollChecklistDisabled = false;
   totalShareditems! : number;
   totalChecklistitems! : number;
-
+  arrayItens: any;
   constructor(
     private service: DataService,
     private fb: FormBuilder,
@@ -71,6 +73,8 @@ export class TasksPageComponent implements OnInit {
     this.user = Security.getUser();
     console.log("user");console.log(this.user);
     this.jobs$ = this.user.jobs;
+    this.setJobs();
+    this.setChecklist();
   }
 
   submit() {}
@@ -85,7 +89,6 @@ export class TasksPageComponent implements OnInit {
   }
 
   async onScrollShared() {
-    this.scrollSharedDisabled = true;
     console.log('scroll sucesso!');
 
     //Verifica se o contador é maior que o numero de itens, caso verdadeiro, desativa o scroll
@@ -96,16 +99,14 @@ export class TasksPageComponent implements OnInit {
       this.busy = true;
 
       //incremento de itens no array
-      this.Shareditems += 9;
       this.scrollSharedDisabled = false;
       await Utilities.delay(2000);
-      this.setJobs();
+      this.getNextJobs();
       this.busy = false;
     }
   }
 
   async onScrollChecklist(){
-    this.scrollChecklistDisabled = true;
     console.log('scroll sucesso!');
 
     //Verifica se o contador é maior que o numero de itens, caso verdadeiro, desativa o scroll
@@ -116,10 +117,9 @@ export class TasksPageComponent implements OnInit {
       this.busy = true;
 
       //incremento de itens no array
-      this.ChecklistItems += 9;
       this.scrollChecklistDisabled = false;
       await Utilities.delay(2000);
-      this.setChecklist();
+      this.getNextChecklists();
       this.busy = false;
     }
   }
@@ -134,19 +134,42 @@ export class TasksPageComponent implements OnInit {
 
 
   setJobs() {
-    this.service.getPagedJobs(this.Shareditems).subscribe(data => {
-      this.jobsShared$ = data.items;
-      this.totalShareditems = data.totalItemCount;
-      console.log(data);
-  });
-}
+    this.service.getPagedJobs(this.ItemsPage, this.Shareditems).subscribe(res => {
+      this.jobsShared$ = res.items;
+      this.totalShareditems = res.totalItemCount;
+      console.log(res);
+      this.ItemsPage++;
+      });
+  }
+
+  getNextJobs() {
+    this.service.getPagedJobs(this.ItemsPage, this.Shareditems).subscribe(res => {
+      this.jobsShared$.push(...res.items)
+      this.totalShareditems = res.totalItemCount;
+      console.log(res);
+      console.log(this.jobsShared$);
+      this.ItemsPage++;
+      });
+  }
 
   async setChecklist() {
-     this.service.getPagedChecklist(this.ChecklistItems).subscribe(data  => {
+     this.service.getPagedChecklist(this.ChecklistPage,this.ChecklistItems).subscribe(data  => {
        this.checklist$ = data.items;
        this.totalChecklistitems = data.totalItemCount;
        console.log(data);
+       this.ChecklistPage++;
     });
+  }
+
+
+
+  getNextChecklists() {
+    this.service.getPagedChecklist(this.ItemsPage, this.Shareditems).subscribe(res => {
+      this.checklist$.push(...res.items)
+      this.totalChecklistitems = res.totalItemCount;
+      console.log(res);
+      this.ChecklistPage++;
+      });
   }
 
   async changeLabel(option: any){
@@ -169,7 +192,6 @@ export class TasksPageComponent implements OnInit {
         this.showDiv.showChecklist = false;
         this.busy = true;
         //this.setLenght()
-        this.setJobs();
         await Utilities.delay(1200);
         this.busy = false
         break;
@@ -188,7 +210,6 @@ export class TasksPageComponent implements OnInit {
         this.showDiv.showHours = false;
         this.showDiv.showChecklist = true;
         this.busy = true;
-        this.setChecklist();
         await Utilities.delay(1200);
         this.busy = false
         break;
