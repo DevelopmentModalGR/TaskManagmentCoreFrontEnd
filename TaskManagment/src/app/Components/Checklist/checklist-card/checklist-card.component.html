@@ -7,7 +7,7 @@
       <p > <strong>INICIADO:</strong> {{checklist.startDate | date}}  {{checklist.startDate | date:'H:mm'}}</p>
       <p > <strong>Tasks: </strong> {{checklist.jobs.length}}</p>
 
-    <button class="uk-button uk-button-default add-button animate__animated animate__fadeInUp button" (click)="changeMode('pause')" *ngIf="mode =='play'">
+<!--     <button class="uk-button uk-button-default add-button animate__animated animate__fadeInUp button" (click)="changeMode('pause')" *ngIf="mode =='play'">
       <i class="fas fa-play">
       <span class=" uk-margin-small-right"></span>
           Iniciar </i>
@@ -16,7 +16,15 @@
       <i class="fas fa-pause">
         <span class="uk-margin-small-right"></span>
         Pausar </i>
-    </button>
+    </button> -->
+
+    <div class="uk-animation-toggle" tabindex="0">
+        <button class="uk-button uk-button-default uk-animation-slide-top-small" (click)="OpenCreateJobs()">
+          <i class="fas fa-tasks">
+            <span class="uk-margin-small-right"></span>
+             Tasks  </i>
+        </button>
+      </div>
   </div>
 
 </div>

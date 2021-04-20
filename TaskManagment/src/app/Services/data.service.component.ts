@@ -18,7 +18,18 @@ export class DataService {
   public url = 'https://localhost:5001';
   //#endregion
 
-  constructor(private http: HttpClient) {}
+  headers: object;
+
+  constructor(private http: HttpClient) {
+    this.headers = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token')
+      }),
+    }
+  }
 
   public composeHeaders() {
     const token = Security.getToken();
@@ -46,28 +57,32 @@ export class DataService {
   }
 
   getJobs(): Observable<Job[]> {
-    return this.http.get<Job[]>(`${this.url}/jobs`);
+    return this.http.get<Job[]>(`${this.url}/jobs`, this.headers);
   }
 
   getPagedJobs(PageNum: number, itemsNum: number): Observable<any> {
-    return this.http.get<any>(`${this.url}/jobs/page/${PageNum}/${itemsNum}`);
+    return this.http.get<any>(`${this.url}/jobs/page/${PageNum}/${itemsNum}`, this.headers);
   }
 
   getCompanies(): Observable<Company[]>{
-    return this.http.get<Company[]>(`${this.url}/company`);
+    return this.http.get<Company[]>(`${this.url}/company`, this.headers);
   }
 
   getChecklists(): Observable<Checkout[]>{
-    return this.http.get<Checkout[]>(`${this.url}/Checkout/`);
+    return this.http.get<Checkout[]>(`${this.url}/Checkout/`, this.headers);
   }
 
   getPagedChecklist(PageNum: number, itemsNum: number): Observable<any> {
-    return this.http.get<any>(`${this.url}/checkout/page/${PageNum}/${itemsNum}`);
+    return this.http.get<any>(`${this.url}/checkout/page/${PageNum}/${itemsNum}`, this.headers);
+  }
+
+  getChecklistsById(ChecklistId: number): Observable<Checkout[]>{
+    return this.http.get<Checkout[]>(`${this.url}/Checkout/${ChecklistId}`, this.headers);
   }
 
 
   getPagenetedJobs(itemsNum: number): Observable<any> {
-    return this.http.get<any>(`${this.url}/jobs/Page/${itemsNum}`);
+    return this.http.get<any>(`${this.url}/jobs/Page/${itemsNum}`, this.headers);
   }
 
   getProfile() {

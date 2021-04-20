@@ -1,3 +1,4 @@
+import { ShowChecklistJobsModal } from 'src/app/Pages/SharedModals/Show-Checklist-Jobs-Modal/Show-Checklist-Jobs-Modal';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { UserCardComponent } from './Components/User/user-card/user-card.component';
 import { DataService } from 'src/app/Services/data.service.component';
@@ -29,6 +30,8 @@ import { InfiniteScrollComponent } from './Components/Shared/infinite-scroll-com
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ChecklistCardComponent } from './Components/Checklist/checklist-card/checklist-card.component';
 import { LoadingSmallComponent } from './Components/Shared/loading-small/loading-small.component';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -48,7 +51,8 @@ import { LoadingSmallComponent } from './Components/Shared/loading-small/loading
     TasksCardComponent,
     InfiniteScrollComponent,
     ChecklistCardComponent,
-    LoadingSmallComponent
+    LoadingSmallComponent,
+    ShowChecklistJobsModal
   ],
   imports: [
     CommonModule,
@@ -59,6 +63,8 @@ import { LoadingSmallComponent } from './Components/Shared/loading-small/loading
     AppRoutingModule,
     BrowserAnimationsModule,
     InfiniteScrollModule,
+    MatDialogModule,
+    MatFormFieldModule,
     ToastrModule.forRoot()
   ],
   providers: [DataService, AuthService, UtilServices],
