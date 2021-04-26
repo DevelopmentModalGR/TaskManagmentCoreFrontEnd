@@ -1,6 +1,7 @@
 <div class="search-results"
-    infiniteScroll
-    [infiniteScrollDistance]="2"
-    [infiniteScrollThrottle]="50"
+  infinite-scroll
+  [infiniteScrollDistance]="scrollDistance"
+  [infiniteScrollThrottle]="throttle"
+  [infiniteScrollDisabled]="scrollDisabled"
     (scrolled)="onScroll()">
 </div>

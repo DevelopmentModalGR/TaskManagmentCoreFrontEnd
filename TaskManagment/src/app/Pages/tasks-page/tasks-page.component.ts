@@ -9,12 +9,20 @@ import { User } from 'src/app/Models/user.model';
 import { DataService } from 'src/app/Services/data.service.component';
 import { UtilServices } from 'src/app/Services/utilServices.service';
 import { Security } from 'src/app/Utils/security.util.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ShowChecklistJobsModal } from '../SharedModals/Show-Checklist-Jobs-Modal/Show-Checklist-Jobs-Modal';
+
+export interface DialogData {
+  ChecklistId: number;
+}
+
 
 @Component({
   selector: 'app-tasks-page',
   templateUrl: './tasks-page.component.html',
   styleUrls: ['./tasks-page.component.css'],
 })
+
 export class TasksPageComponent implements OnInit {
   public form!: FormGroup;
   public LogoUrl = '../assets/logo.png';
@@ -42,7 +50,7 @@ export class TasksPageComponent implements OnInit {
   Shareditems = 12;
   ItemsPage = 1;
   ChecklistPage = 1;
-  ChecklistItems = 3;
+  ChecklistItems = 12;
   throttle = 150;
   scrollDistance = 1;
   modalOpen = false;
@@ -51,11 +59,14 @@ export class TasksPageComponent implements OnInit {
   totalShareditems! : number;
   totalChecklistitems! : number;
   arrayItens: any;
+  ChecklistId!: number;
+
   constructor(
     private service: DataService,
     private fb: FormBuilder,
     private toastr: ToastrService,
-    private util: UtilServices
+    private util: UtilServices,
+    public dialog: MatDialog
   ) {
     this.form = this.fb.group({
       DepartmentId: [
@@ -86,6 +97,15 @@ export class TasksPageComponent implements OnInit {
     console.log(`checklist lenght abaixo abaixo:`);console.log(this.checklist$.length);
     console.log(`total items abaixo:`);console.log(this.totalShareditems);
     console.log(`numero de itens`);console.log(this.Shareditems);
+    const dialogRef = this.dialog.open(ShowChecklistJobsModal,
+      {
+        width: '250px',
+        data: {CheckId: this.ChecklistId},
+        panelClass: 'custom-dialog-container'
+      });
+      dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
   async onScrollShared() {
@@ -164,7 +184,7 @@ export class TasksPageComponent implements OnInit {
 
 
   getNextChecklists() {
-    this.service.getPagedChecklist(this.ItemsPage, this.Shareditems).subscribe(res => {
+    this.service.getPagedChecklist(this.ChecklistPage, this.ChecklistItems).subscribe(res => {
       this.checklist$.push(...res.items)
       this.totalChecklistitems = res.totalItemCount;
       console.log(res);

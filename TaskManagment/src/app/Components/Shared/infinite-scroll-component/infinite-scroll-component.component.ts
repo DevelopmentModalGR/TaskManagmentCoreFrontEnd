@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DataService } from 'src/app/Services/data.service.component';
+import { Utilities } from 'src/app/Utils/utilities.util.component';
 
 @Component({
   selector: 'app-infinite-scroll-component',
@@ -8,37 +10,47 @@ import { Component, Input, OnInit } from '@angular/core';
 export class InfiniteScrollComponent {
 
   @Input() item!: any;
+  @Input() services!: any;
 
-  scroll!: any[];
-  array!: any[];
-  sum = 2;
-  throttle = 300;
-  scrollDistance = 1;
-  scrollUpDistance = 2;
-  direction = "";
-  modalOpen = false;
+   //Scroll Parameters
+   Shareditems = 12;
+   ItemsPage = 1;
+   ChecklistPage = 1;
+   ChecklistItems = 3;
+   throttle = 150;
+   scrollDistance = 1;
+   modalOpen = false;
+   scrollDisabled = false;
+   scrollChecklistDisabled = false;
+   totalShareditems! : number;
+   totalChecklistitems! : number;
+   arrayItens: any;
 
-  constructor() {
-    this.appendItems(0, this.sum);
-  }
+  constructor( private service: DataService
+    ){}
 
-  addItems(startIndex: any, endIndex: any) {
-    for (let i = startIndex; i < endIndex; ++i) {
-      this.array[i] = this.item[i];
+  async onScroll() {
+    console.log('scroll sucesso!');
+
+    //Verifica se o contador é maior que o numero de itens, caso verdadeiro, desativa o scroll
+    if(this.Shareditems >= this.totalShareditems) {
+      this.scrollDisabled = true;console.log('scrolldisabled');
+    }
+    else{
+      //incremento de itens no array
+      this.scrollDisabled = false;
+      await Utilities.delay(2000);
+      this.getNextItens();
     }
   }
 
-  appendItems(startIndex: any, endIndex: any) {
-    this.addItems(startIndex, endIndex);
+  getNextItens() {
+ /*    this.services.subscribe(res => {
+      this.arrayItens.push(...res.items)
+      this.totalShareditems = res.totalItemCount;
+      console.log(res);
+      console.log(this.arrayItens);
+      this.ItemsPage++;
+      }); */
   }
-
-  onScroll() {
-    // add another 2 items
-    const start = this.sum;
-    this.sum += 2;
-    this.appendItems(start, this.sum);
-
-    this.direction = "down";
-  }
-
 }
