@@ -9,13 +9,14 @@ import { Security } from 'src/app/Utils/security.util.component';
 import { Company } from '../Models/company.model';
 import { CATCH_ERROR_VAR } from '@angular/compiler/src/output/output_ast';
 import { Job } from '../Models/job.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
   //#region Atributos
-  public url = 'https://localhost:5001';
+  public url = environment.url;
   //#endregion
 
   headers: object;
@@ -41,6 +42,7 @@ export class DataService {
 
   authenticate(data: any) {
     console.log('teste');
+    console.log("this url", this.url);
     return this.http.post(`${this.url}/users/login`, data);
   }
 
@@ -101,9 +103,11 @@ export class DataService {
     return this.http.post(`${this.url}/users/reset-password`, data);
   }
 
+  updateProfile(data: any) {
+        return this.http.put(`${this.url}/users/updateuser`, data, { headers: this.composeHeaders() });
+    }
+
   //#endregion
 
-  /*  updateProfile(data: any) {
-        return this.http.put(`${this.url}/users`, data, { headers: this.composeHeaders() });
-    } */
+
 }

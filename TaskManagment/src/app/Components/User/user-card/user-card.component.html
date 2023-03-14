@@ -68,10 +68,10 @@
 
 
     <div class="uk-margin uk-text-center">
-      <button (click)="showDiv.showInfo = false" class="uk-button uk-button-danger uk-button-large">Descartar Alterações</button>
+      <button class="uk-button uk-button-danger uk-button-large" (click)="cancelarAlteracoes()">Descartar Alterações</button>
     </div>
       <div class="uk-margin uk-text-center">
-        <button (click)="showDiv.showInfo = false" class="uk-button uk-button-primary uk-button-large" [disabled]="form.invalid"  (click)="submit()">Salvar Alterações</button>
+        <button class="uk-button uk-button-primary uk-button-large" (click)="submit()">Salvar Alterações</button>
       </div>
   </div>
 </form>

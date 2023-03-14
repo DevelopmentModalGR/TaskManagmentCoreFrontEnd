@@ -56,6 +56,7 @@ export class LoginPageComponent implements OnInit {
       .authenticate(this.form.value)
       .subscribe(
         async (data: any) => {
+          console.log("login data", data)
           await this.util.delay(2300);
           this.toastr.success('Bem Vindo! ', 'Login com Sucesso!');
           this.setUser(data.user, data.token);

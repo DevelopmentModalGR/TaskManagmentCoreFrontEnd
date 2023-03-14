@@ -2,8 +2,7 @@
   <div class="uk-card-media-top uk-text-center">
   </div>
   <div class="uk-card-body uk-animation-slide-top-small">
-      <h3 class="uk-card-title "> {{ job.name }} </h3>
-      <br *ngIf="job.name.length <= 28">
+      <h3 class="uk-card-title "> {{ job.name.substring(0,27) }}... </h3>
       <p > <strong>INICIADO:</strong> {{job.startDate | date}}  {{job.startDate | date:'H:mm'}}</p>
       <p > <strong>DECORRIDO: </strong> {{today| date}}  {{today | date:'H:mm'}}</p>
       <p *ngIf="job.status == 1" style="height: 50px;"> CRIADO </p>

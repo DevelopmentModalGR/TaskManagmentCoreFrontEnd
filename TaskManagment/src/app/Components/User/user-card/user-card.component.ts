@@ -54,10 +54,6 @@ export class UserCardComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.user = Security.getUser();
-  }
-
   showDiv = {
     showDepart: false,
     showInfo: false,
@@ -66,7 +62,59 @@ export class UserCardComponent implements OnInit {
     next : false
   }
 
-  submit(){
+  ngOnInit(): void {
+    this.user = Security.getUser();
+  }
 
+  submit(){
+    const loginData  = Security.getUser();
+    this.showDiv.showInfo = false
+    const getDataFromForm = this.formatFormData(this.form, loginData);
+    this.form.setValue(getDataFromForm);
+    const updatePayload = {
+                    ...getDataFromForm,
+                    id: loginData.id
+    };
+    this.updateUser(updatePayload);
+  }
+
+  updateUser(updatePayload: unknown) {
+      this.service.updateProfile(updatePayload).subscribe(
+        async (data: any) => {
+          this.toastr.success("Atualização Efetuada com Sucesso!");
+          console.log("data da atualizacao de form", data);
+        },
+        (err) => {
+          this.toastr.error("Erro ao atualizar usuário", this.returnValidError(err));
+          console.log(err);
+        }
+      );
+    }
+
+  formatFormData(form: FormGroup, user: User){
+    const data = {
+      name: form.get('name')?.value,
+      email: form.get('email')?.value,
+      password: form.get('password')?.value,
+      confirmPassword: form.get('confirmPassword')?.value,
+      companyId: user.companyId,
+      isActive: user.isActive,
+      role: user.role
+    }
+    return data;
+  }
+
+  returnValidError(err: any){
+    if(err.error){
+      return err.error
+    }
+    return err
+  }
+
+  cancelarAlteracoes(){
+    this.showDiv.showInfo = false;
+    this.form.reset();
   }
 }
+
+
